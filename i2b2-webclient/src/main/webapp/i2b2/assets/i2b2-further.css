@@ -1,0 +1,50 @@
+/*========================================================*/
+	/* Style sheet for FURTHeR tweaks of the i2b2 web client  */
+	/*                                                        */
+	/* By convention, all styles declared in this file should */
+	/* have names that start with "further_", to avoid name   */
+	/* conflicts with other i2b2 styles.                      */
+	/*========================================================*/
+.further_text {
+	color: #4682B4;
+	font-weight:bold;
+}
+
+.further_datasource_name {
+	color: #006400;
+}
+
+.further_data_category {
+	color: #006400;
+}
+
+.further_data_category_disabled {
+	color: #A9A9A9;
+}
+
+.further_text_highlight{
+	color:#A52A2A;
+}
+
+.further_datasource-info {
+	background: transparent url('../js-i2b2/cells/ONT/assets/info-icon.png')
+		no-repeat;
+	text-decoration: none;
+	padding-left: 20px;
+	padding-top: 3px;
+	font-weight: bold;
+}
+
+.further_explain-results-container {
+	padding-top:5px;	
+}
+
+.further_explain-results-container a:hover {
+	font-weight: bold;
+}
+
+.further_explain-results {
+	background: transparent url('images/question.png') no-repeat;
+	padding-left: 17px;
+	text-decoration: none;
+}

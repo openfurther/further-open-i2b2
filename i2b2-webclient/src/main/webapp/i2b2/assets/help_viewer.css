@@ -1,0 +1,57 @@
+#help-viewer-panel .bd { 
+	overflow:auto; 
+	background-color:fff; 
+	padding:10px; 
+}
+
+#help-viewer-panel .ft { 
+	height:15px; 
+	padding:0; 
+}
+
+#help-viewer-panel .yui-resize-handle-br { 
+	right:0; 
+	bottom:0; 
+	height: 8px; 
+	width: 8px; 
+	position:absolute;  
+}
+
+#datasource-info-viewer-panel .bd { 
+	overflow:auto; 
+	background-color:fff; 
+	padding:10px; 
+}
+
+#datasource-info-viewer-panel .ft { 
+	height:15px; 
+	padding:0; 
+}
+
+#datasource-info-viewer-panel .yui-resize-handle-br { 
+	right:0; 
+	bottom:0; 
+	height: 8px; 
+	width: 8px; 
+	position:absolute;  
+}
+
+#explain-results-viewer-panel .bd { 
+	overflow:auto; 
+	background-color:fff; 
+	padding:10px; 
+}
+
+#explain-results-viewer-panel .ft { 
+	height:15px; 
+	padding:0; 
+}
+
+#explain-results-viewer-panel .yui-resize-handle-br { 
+	right:0; 
+	bottom:0; 
+	height: 8px; 
+	width: 8px; 
+	position:absolute;  
+}
+

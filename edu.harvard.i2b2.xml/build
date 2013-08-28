@@ -1,0 +1,3 @@
+#!/bin/bash
+# Seems like nothing needs to be done here
+#ant -f master_build.xml clean build-all deploy

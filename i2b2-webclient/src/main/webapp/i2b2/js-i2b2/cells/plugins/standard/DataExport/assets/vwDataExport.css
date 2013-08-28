@@ -1,0 +1,135 @@
+/*** CSS for main plugin wrapper ***/
+
+DIV#DataExport-mainDiv {
+	padding: 0px;
+}
+
+
+
+/*** CSS for tab background ***/
+
+/* Must add an overflow for the container of the DataExport-MainContent or IE does not
+   correctly display a scrollbar - FUR-291 */
+DIV#DataExport-CONTENT {
+/*
+	overflow:visible;
+	height:100%;
+*/
+}
+
+DIV#DataExport-TABS DIV.yui-content {
+	background: #FFF;
+}
+DIV#DataExport-TABS DIV.DataExport-MainContent {
+	background:#FFF;
+	border:solid #63758C;
+	border-width:1px 0;
+	height:100%;
+/*	overflow:auto; */
+	overflow:visible; overflow-x:hidden; overflow-y:auto;
+	min-height: 300px;
+}
+DIV#DataExport-TABS DIV.DataExport-MainContentPad {
+	padding:10px 10px;
+}
+
+
+
+/*** CSS for the Specify Data tab ***/
+
+DIV#DataExport-mainDiv DIV.droptrgtlbl {
+	padding: 6px 0px;
+	width:80px;
+	text-align:right;
+	float: left;
+	font-weight:bold;
+	color:#666;
+	margin: 15px 10px 0px 0px;
+}
+DIV#DataExport-mainDiv DIV.droptrgt {
+	padding: 5px 10px;
+	background: #DEEBEF;
+	margin-top: 15px;
+	text-align:left;
+	border: 1px solid #63758C;
+	width:300px;
+	overflow:hidden;
+}
+
+
+
+
+
+/*** CSS for the Plugin Help tab ***/
+
+DIV#DataExport-TABS H1 {
+	margin:0 0 10px 0;
+	font-size:16px;
+	color:#42558C;
+	font-weight:bold;
+}
+DIV#DataExport-TABS H2 {
+	margin:10px 0 10px 0;
+	font-size:13px;
+	color:#42558C;
+	font-weight:bold;
+}
+DIV#DataExport-TABS HR {
+	margin:0;
+}
+
+DIV#DataExport-mainDiv DIV#exportBox {
+	position:relative;
+	xdisplay:none;
+	background:#6677AA;
+	border:1px solid #667788;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-family:arial,helvetica;
+	font-size:11px;
+	height:16px;
+	line-height:16px;
+	text-align:center;
+	color:#FFF;
+	cursor:pointer;
+	float: left;
+	margin:0px 5px 0px 0px;
+	width:72px;
+	xz-index:5;
+	overflow:hidden;
+}
+
+DIV#DataExport-mainDiv DIV#exportBox a {
+	color:#FFF;
+	display:block;
+	text-decoration:none;
+}
+
+DIV#DataExport-mainDiv DIV#downloadBox {
+	position:relative;
+	xdisplay:none;
+	background:#6677AA;
+	border:1px solid #667788;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-family:arial,helvetica;
+	font-size:11px;
+	height:16px;
+	line-height:16px;
+	text-align:center;
+	color:#FFF;
+	cursor:pointer;
+	float: left;
+	margin:0px 5px 0px 0px;
+	width:72px;
+	xz-index:5;
+	overflow:hidden;
+}
+
+DIV#DataExport-mainDiv DIV#downloadBox a {
+	color:#FFF;
+	display:block;
+	text-decoration:none;
+}
+
+

@@ -1,0 +1,54 @@
+<html>
+<body>
+
+<link rel="stylesheet" type="text/css" href="help/assets/help.css" />
+
+<div style="text-align: center">
+<h1>About the Results</h1>
+Version 1.0<br />
+Updated January 31, 2011</div>
+
+<h2>Query Results</h2>
+
+<h3>Results: Patients Common in All Sources</h3>
+<div>The number of patients that are common to all data sources.
+In the diagram below, patients which occur in the overlapped area are
+common to data source 1 and data source 2.</div>
+<img src="/i2b2/assets/images/intersection.png" />
+
+<h3>Results: Unique Patient Total</h3>
+<div>The number of individually unique patients from all data
+sources. If a patient is common to more than one data source, they are
+only counted once. In the diagram below, patients which occur in the
+overlapped area of data source 1 and data source 2 are only counted
+once.</div>
+<img src="/i2b2/assets/images/union.png" />
+
+<h3>Results: Sum</h3>
+<div>The sum of aggregate counts received from all data sources.
+If a patient is common to more than one data source, they are counted
+once for each data source. In the diagram below, everything from data
+source 1 and data source 2 is included, including the area for which
+they overlap.</div>
+<img src="/i2b2/assets/images/sum.png" />
+
+<h3>Result Values</h3>
+<div>
+<ul>
+	<li><strong>Negative one (-1)</strong>
+	<ul style="padding-top: 5px;">
+		<li>The data source was not able to answer your query because it
+		does not support one or more of the data types included in your
+		criteria. For more information about what datatypes are supported for
+		each data source, click either the info button next to a term in the
+		Navigate Terms window or the Data Source information info button.</li>
+	</ul>
+	</li>
+</ul>
+</div>
+
+<br />
+<br />
+
+</body>
+</html>

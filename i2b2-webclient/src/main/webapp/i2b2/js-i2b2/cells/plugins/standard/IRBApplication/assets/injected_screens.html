@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<script type="text/javascript" src="../data_elements.js"></script>
+</head>
+	<body>
+
+		<div id='IRBApplication-mainDiv'>
+
+			<div id="IRBApplication-TABS" class="yui-navset">
+				<ul class="yui-nav">
+					<li id="IRBApplication-TAB0" class="selected"><a href="#IRBApplication-TAB0"><em>Initiate An IRB Application</em></a></li>
+					<li id="IRBApplication-TAB1"><a href="#IRBApplication-TAB1"><em>Plugin Help</em></a></li>
+				</ul>
+				<div class="yui-content" id="IRBApplication-CONTENT">
+					<div>
+						<div class="IRBApplication-MainContent">
+							<div class="IRBApplication-MainContentPad">
+								<div>Please Enter your IRB Application Title: &nbsp;<input class="applicationTitle" style="width:295px" /></div>
+								<div style="height:25px;"></div>
+								
+								<div>Using a previous query: please drop a query into the input box below.</div>
+								<div class="droptrgtlbl">Query:</div>
+								<div class="droptrgt SDX-PRS" id="IRBApplication-PRSDROP">Drop a Query here</div>
+								<div>Please check the data elements you would like to access for this query</div>
+								<div></div>
+								<div class="further_text" style="margin-left:10px">
+								
+								<input type="checkbox" class="dataCategory" name="dataCategory" value="demographics" onclick="i2b2.IRBApplication.showAttributesDialog()">Demographics
+									<div id="demoAttributeList"></div>
+								</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="condition">Condition</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="procedure">Procedure</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="procedure_cost">Procedure Cost</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="drug">Drug Exposure</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="drug_cost">Drug Cost</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="lab">Lab Observation</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="radiology">Radiology Observation</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="sign">Sign and Symptoms</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="specimen">Pathology (Specimen)</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="allergy">Allergy</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="pregnancy">Pregnancy</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="visit">Visit</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="death">Death Information</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="payer_plan">Payer Plan</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="Provider">Provider</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="care_site">Care Site</div>
+								<div class="further_text" style="margin-left:10px"><input type="checkbox" class="dataCategory" name="dataCategory" value="organization">Organization</div>
+							</div>
+							
+							
+							<div id="dialogAttributeSelect" style="display:none;">
+								<div class="hd" style="background:#6677AA;">Select the attributes you would like to access</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="birthyear">Year of Birth</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="birthmonth">Month of Birth</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="birthday">Day of Birth</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="gender">Gender</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="race">Race</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="ethnicity">Ethnicity</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="education_level">Education Level</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="religion">Religion</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="primary_language">Primary Language</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="marital_status">Marital Status</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="pedigree_quality">Pedigree Quality</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="multiple_birth_indicator">Multiple Birth Indicator</div>
+								<div><input type="checkbox" class="chkDemoAttribute" name="DemoAttribute" value="multiple_birth_order">Multiple Birth Order</div>
+							
+							</div>
+							
+						</div>
+					</div>
+				</div>
+						
+					<div>
+						<div class="IRBApplication-MainContent">
+							<div class="IRBApplication-MainContentPad">
+								<h1>Initiate An IRB Application</h1>
+								<hr size="1" noshade>
+								<h2>Introduction</h2>
+								This plugin allows a user to initiate an IRB application from the query tool.
+								<h2>Instructions</h2>
+								Drag and drop a previous query you would like to get row level patient data including PHI
+								<h2>About Us</h2>
+								This plugin was created by FURTHeR.
+								<h2>Terms of Use</h2>
+								This plugin is distributed with the i2b2 web client framework and may be used free of charge.
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+
+
+
+	</body>
+</html>

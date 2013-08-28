@@ -1,0 +1,110 @@
+/*** CSS for main plugin wrapper ***/
+
+DIV#IRBApplication-mainDiv {
+	padding: 0px;
+}
+
+
+
+/*** CSS for tab background ***/
+
+/* Must add an overflow for the container of the IRBApplication-MainContent or IE does not
+   correctly display a scrollbar - FUR-291 */
+DIV#IRBApplication-CONTENT {
+/*
+	overflow:visible;
+	height:100%;
+*/
+}
+
+DIV#IRBApplication-TABS DIV.yui-content {
+	background: #FFF;
+}
+DIV#IRBApplication-TABS DIV.IRBApplication-MainContent {
+	background:#FFF;
+	border:solid #63758C;
+	border-width:1px 0;
+	height:100%;
+/*	overflow:auto; */
+	overflow:visible; overflow-x:hidden; overflow-y:auto;
+	min-height: 300px;
+}
+DIV#IRBApplication-TABS DIV.IRBApplication-MainContentPad {
+	padding:10px 10px;
+}
+
+
+
+/*** CSS for the Specify Data tab ***/
+
+DIV#IRBApplication-mainDiv DIV.droptrgtlbl {
+	padding: 6px 0px;
+	width:80px;
+	text-align:right;
+	float: left;
+	font-weight:bold;
+	color:#666;
+	margin: 15px 10px 0px 0px;
+}
+DIV#IRBApplication-mainDiv DIV.droptrgt {
+	padding: 5px 10px;
+	background: #DEEBEF;
+	margin-top: 15px;
+	text-align:left;
+	border: 1px solid #63758C;
+	width:300px;
+	overflow:hidden;
+}
+
+DIV#IRBApplication-mainDiv DIV.applicationTitleBar {
+	background:#BBCCEE none repeat scroll 0%;
+	border-bottom:1px solid #667788;
+	overflow:hidden;
+	padding: 2px 5px 5px;
+	margin: 0px -5px 5px;
+	width: auto;
+}
+
+DIV#IRBApplication-mainDiv DIV.titleLabel {
+	font-size:12px;
+	height:15px;
+	line-height:15px;
+	overflow:hidden;
+	float:left;
+
+	xposition:absolute;
+	xz-index:99999;
+}
+
+DIV#IRBApplication-mainDiv DIV#titleValue {
+	background-color:#CBD8EF;
+	border:1px solid #63758C;
+	color:#4C5676;
+	font-size:11px;
+	height:15px;
+	line-height:15px;
+	overflow:hidden;
+	padding:0pt 5px;
+	white-space:nowrap;
+	width:auto;
+}
+
+
+
+/*** CSS for the Plugin Help tab ***/
+
+DIV#IRBApplication-TABS H1 {
+	margin:0 0 10px 0;
+	font-size:16px;
+	color:#42558C;
+	font-weight:bold;
+}
+DIV#IRBApplication-TABS H2 {
+	margin:10px 0 10px 0;
+	font-size:13px;
+	color:#42558C;
+	font-weight:bold;
+}
+DIV#IRBApplication-TABS HR {
+	margin:0;
+}

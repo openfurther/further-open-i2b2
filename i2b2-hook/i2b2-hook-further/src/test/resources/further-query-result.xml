@@ -1,0 +1,26 @@
+<furtherQueryResult>
+	<dataSources>
+		<dataSource>
+			<name>UUEDW</name>
+			<count>123</count>
+		</dataSource>
+		<dataSource>
+			<name>UPDBL</name>
+			<count>456</count>
+		</dataSource>
+	</dataSources>
+	<joins>
+		<join>
+			<name>Sum</name>
+			<count>789</count>
+		</join>
+		<join>
+			<name>Union</name>
+			<count>500</count>
+		</join>
+		<join>
+			<name>Intersection</name>
+			<count>100</count>
+		</join>
+	</joins>
+</furtherQueryResult>

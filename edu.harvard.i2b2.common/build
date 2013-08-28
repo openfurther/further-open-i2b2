@@ -1,0 +1,2 @@
+#!/bin/bash
+ant -f build.xml clean dist deploy jboss_pre_deployment_setup

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<body>
+
+		<div id='DataExport-mainDiv'>
+
+			<div id="DataExport-TABS" class="yui-navset">
+				<ul class="yui-nav">
+					<li id="DataExport-TAB0" class="selected"><a href="#DataExport-TAB0"><em>Export Data</em></a></li>
+					<li id="DataExport-TAB1"><a href="#DataExport-TAB1"><em>Plugin Help</em></a></li>
+				</ul>
+				<div class="yui-content" id="DataExport-CONTENT">
+					<div>
+						<div class="DataExport-MainContent">
+							<div class="DataExport-MainContentPad">
+								<div>Export your results: please drop a Patient Set into the input box below.</div>
+								<div class="droptrgtlbl">Patient Set:</div>
+								<div class="droptrgt SDX-PRS" id="DataExport-PRSDROP">Drop a Patient Set here</div>
+								
+								<div>&nbsp</div>
+								
+								
+								<form method="post" action="dataExport.php" onsubmit="return i2b2.DataExport.preExport()">
+									<input id="xmlMsg" type="hidden" name="exportContext"/>
+									<input id="exportButton" type="submit" value="Export to CSV"/>
+									<input type="reset" onclick="i2b2.DataExport.reset()"value="Reset"/>
+								</form>
+								<div><font color="#A52A2A">Note: At this time, only data records from the University of Utah Enterprise Data Warehouse can be exported.</font></div>
+								
+								
+								<div>&nbsp</div>
+								<div><h2> For REDCap Users: </h2> <img src="assets/images/redcap-logo.PNG" alt="REDCap Logo"> </div>
+								<div>If you would like to import your data to <a href="https://redcap01.brisc.utah.edu/further/redcap/" target="_blank">REDCap</a>, please fill the  <a href="https://redcap01.brisc.utah.edu/further/redcap/surveys/?s=wM27rD" target="_blank">FURTHeR Data Import Form </a> with your exported data file. The REDCap administrator will create a REDCap project for you.</div>								
+								
+								<div id="csv-export-help-viewer-panel" style="display:none;">
+									<div class="hd">De-identified Data Export Help</div>
+									<div class="bd" id="csv-export-help-viewer-body" class="help-viewer-body">
+									<p>Lorem Ipsum...</p>
+								</div>
+								<div class="ft"></div>
+								</div>
+								
+								<div id="redcap-export-help-viewer-panel" style="display:none;">
+									<div class="hd">De-identified Data Export Help</div>
+									<div class="bd" id="redcap-export-help-viewer-body" class="help-viewer-body">
+									<p>Lorem Ipsum...</p>
+								</div>
+								<div class="ft"></div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="DataExport-MainContent">
+							<div class="DataExport-MainContentPad">
+								<h1>Data Export (de-identified) </h1>
+								<hr size="1" noshade>
+								<h2>Introduction</h2>
+								This plugin allows a user to export the de-identified result set.
+								<h2>Instructions</h2>
+								Drag and drop the patient set you intend to export, and choose where to export.
+								<h2>About Us</h2>
+								This plugin was created by FURTHeR.
+								<h2>Terms of Use</h2>
+								This plugin is distributed with the i2b2 web client framework and may be used free of charge.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+
+	</body>
+</html>

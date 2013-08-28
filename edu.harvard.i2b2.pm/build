@@ -1,0 +1,2 @@
+#!/bin/bash
+cat build.in | ant -f master_build.xml clean build-all

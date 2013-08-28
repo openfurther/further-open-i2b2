@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Example of a raw i2b2 response intercepted by the FURTHeR hook -->
+<ns5:response xmlns:tns="http://axis2.crc.i2b2.harvard.edu"
+	xmlns:ns9="http://www.i2b2.org/xsd/hive/msg/result/1.1/" xmlns:ns4="http://www.i2b2.org/xsd/cell/crc/psm/1.1/"
+	xmlns:ns7="http://www.i2b2.org/xsd/cell/pm/1.1/" xmlns:ns3="http://www.i2b2.org/xsd/cell/crc/pdo/1.1/"
+	xmlns:ns5="http://www.i2b2.org/xsd/hive/msg/1.1/" xmlns:ns2="http://www.i2b2.org/xsd/hive/pdo/1.1/"
+	xmlns:ns6="http://www.i2b2.org/xsd/cell/crc/psm/querydefinition/1.1/"
+	xmlns:ns8="http://www.i2b2.org/xsd/cell/ont/1.1/">
+	<message_header>
+		<i2b2_version_compatible>1.1</i2b2_version_compatible>
+		<hl7_version_compatible>2.4</hl7_version_compatible>
+		<sending_application>
+			<application_name>edu.harvard.i2b2.crc</application_name>
+			<application_version>1.3</application_version>
+		</sending_application>
+		<sending_facility>
+			<facility_name>i2b2 Hive</facility_name>
+		</sending_facility>
+		<receiving_application>
+			<application_name>i2b2_QueryTool</application_name>
+			<application_version>0.2</application_version>
+		</receiving_application>
+		<receiving_facility>
+			<facility_name>i2b2 Hive</facility_name>
+		</receiving_facility>
+		<message_control_id>
+			<instance_num>1</instance_num>
+		</message_control_id>
+		<project_id>FURTHeR</project_id>
+	</message_header>
+	<response_header>
+		<info>Log information</info>
+		<result_status>
+			<status type="DONE">DONE</status>
+			<polling_url interval_ms="100" />
+		</result_status>
+	</response_header>
+	<message_body>
+		<ns4:response xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xsi:type="ns4:master_instance_result_responseType">
+			<status>
+				<condition type="DONE">DONE</condition>
+			</status>
+			<query_master>
+				<query_master_id>2416</query_master_id>
+				<name>Unspecified inf@18:01:27</name>
+				<user_id>u0448370</user_id>
+				<group_id>FURTHeR</group_id>
+				<create_date>2011-03-28T12:03:26.000-06:00</create_date>
+				<request_xml>&lt;?xml version="1.0" encoding="UTF-8"
+					standalone="yes"?>
+					&lt;ns2:query_definition
+					xmlns:ns2="http://www.i2b2.org/xsd/cell/crc/psm/querydefinition/1.1/">
+					&lt;query_name>Unspecified inf@18:01:27&lt;/query_name>
+					&lt;specificity_scale>0&lt;/specificity_scale>
+					&lt;panel>
+					&lt;panel_number>1&lt;/panel_number>
+					&lt;panel_accuracy_scale>0&lt;/panel_accuracy_scale>
+					&lt;invert>0&lt;/invert>
+					&lt;total_item_occurrences>1&lt;/total_item_occurrences>
+					&lt;item>
+					&lt;hlevel>7&lt;/hlevel>
+					&lt;item_name>Unspecified infection of bone, hand [730.94]&lt;/item_name>
+					&lt;item_key>\\FURTHER\FURTHER\ICD-9\Diseases and injuries
+					(001-999.99)\Diseases of the musculoskeletal system and connective
+					tissue (710-739.99)\Osteopathies, chondropathies, and acquired
+					musculoskeletal deformities (730-739.99)\Osteomyelitis,
+					periostitis, and other infections involving bone (730)\Unspecified
+					infection of bone (730.9)\Unspecified infection of bone, hand
+					(730.94)\&lt;/item_key>
+					&lt;item_icon>LA&lt;/item_icon>
+					&lt;tooltip>ICD-9 \ Diseases and injuries (001-999.99) \ Diseases of the
+					musculoskeletal system and connective tissue (710-739.99) \
+					Osteopathies, chondropathies, and acquired musculoskeletal
+					deformities (730-739.99) \ Osteomyelitis, periostitis, and other
+					infections involving bone (730) \ Unspecified infection of bone
+					(730.9) \ Unspecified infection of bone, hand (730.94)&lt;/tooltip>
+					&lt;class>ENC&lt;/class>
+					&lt;constrain_by_date/>
+					&lt;item_is_synonym>false&lt;/item_is_synonym>
+					&lt;/item>
+					&lt;/panel>
+					&lt;/ns2:query_definition>
+</request_xml>
+			</query_master>
+			<query_instance>
+				<query_instance_id>2416</query_instance_id>
+				<query_master_id>2416</query_master_id>
+				<user_id>u0448370</user_id>
+				<group_id>FURTHeR</group_id>
+				<start_date>2011-03-28T12:03:26.000-06:00</start_date>
+				<end_date>2011-03-28T12:03:29.000-06:00</end_date>
+				<query_status_type>
+					<status_type_id>6</status_type_id>
+					<name>COMPLETED</name>
+					<description>COMPLETED</description>
+				</query_status_type>
+			</query_instance>
+			<query_result_instance>
+				<result_instance_id>2674</result_instance_id>
+				<query_instance_id>2416</query_instance_id>
+				<query_result_type>
+					<result_type_id>1</result_type_id>
+					<name>PATIENTSET</name>
+					<description>Patient list</description>
+				</query_result_type>
+				<furtherQueryResult>
+					<dataSources>
+						<dataSource>
+							<name>UUEDW</name>
+							<count>5</count>
+						</dataSource>
+					</dataSources>
+					<joins />
+				</furtherQueryResult>
+				<start_date>2011-03-28T12:03:26.000-06:00</start_date>
+				<end_date>2011-03-28T12:03:27.000-06:00</end_date>
+				<query_status_type>
+					<status_type_id>2</status_type_id>
+					<name>PROCESSING</name>
+					<description>PROCESSING</description>
+				</query_status_type>
+			</query_result_instance>
+		</ns4:response>
+	</message_body>
+</ns5:response>

@@ -1,0 +1,31 @@
+#!/bin/bash
+###########################################################################
+# A comprehensive i2b2 code build script. Builds all cells.
+#
+# Author: Oren E. Livne
+# Date: 22-OCT-09
+# Date: 11-FEB-10   Added support for multiple FURTHeR environments.
+###########################################################################
+
+echo "#################### Building Cell: Common ##########"
+cd edu.harvard.i2b2.common; ./build; cd ..
+
+echo "#################### Building Cell: PM ##############"
+cd edu.harvard.i2b2.pm; ./build; cd ..
+
+echo "#################### Building Cell: ONT #############"
+cd edu.harvard.i2b2.ontology; ./build; cd ..
+
+echo "#################### Building Cell: CRC Loader ######"
+cd edu.harvard.i2b2.crc.loader; ./build; cd ..
+
+echo "#################### Building Cell: CRC #############"
+cd edu.harvard.i2b2.crc; ./build; cd ..
+
+echo "#################### Building Cell: FR ##############"
+cd edu.harvard.i2b2.fr; ./build; cd ..
+
+echo "#################### Building Cell: WORKPLACE #######"
+cd edu.harvard.i2b2.workplace; ./build; cd ..
+
+cd i2b2-hook; mvn clean install

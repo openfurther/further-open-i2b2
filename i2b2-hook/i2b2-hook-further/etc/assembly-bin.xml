@@ -1,0 +1,38 @@
+<!-- ================================================ -->
+<!-- Assembly descriptor - creates project zip file   -->
+<!-- ================================================ -->
+<assembly>
+	<id>bin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>${project.build.directory}</directory>
+			<includes>
+				<include>${project.artifactId}.jar</include>
+				<include>web.xml.*</include>
+			</includes>
+			<!-- Place files at the root directory of the zip file -->
+			<outputDirectory />
+		</fileSet>
+	</fileSets>
+
+	<!-- Export FURTHeR libraries -->
+	<dependencySets>
+		<dependencySet>
+			<includes>
+				<include>edu.utah.further.core:core-api</include>
+				<include>edu.utah.further.core:core-ws</include>
+				<include>edu.utah.further.core:core-web</include>
+				<include>edu.utah.further.core:core-query</include>
+				<include>edu.utah.further.core:core-xml</include>
+				<include>edu.utah.further.core:core-util</include>
+				<include>edu.utah.further.fqe:fqe-ds-api</include>
+				<include>edu.utah.further.security:security-api</include>
+				<include>org.slf4j:slf4j-api</include>
+				<include>org.slf4j:slf4j-jcl</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+</assembly>

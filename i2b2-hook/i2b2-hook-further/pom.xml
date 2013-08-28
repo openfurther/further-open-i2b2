@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!--+===========================================+ -->
+	<!--| Project information | -->
+	<!--+===========================================+ -->
+	<parent>
+		<artifactId>i2b2-hook</artifactId>
+		<groupId>edu.utah.further.i2b2.hook</groupId>
+		<version>1.4.0-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.utah.further.i2b2</groupId>
+	<artifactId>i2b2-hook-further</artifactId>
+	<packaging>jar</packaging>
+	<name>I2B2 FURTHeR Hook</name>
+	<description>I2B2 FURTHeR Integration Hook</description>
+	<url>http://further.utah.edu</url>
+
+	<!--+===========================================+ -->
+	<!--| Properties / version numbers | -->
+	<!--+===========================================+ -->
+	<properties>
+		<shortName>further</shortName>
+
+		<!-- Must be the same versions used by the i2b2 application -->
+		<java.version>1.5</java.version>
+		<httpclient.version>3.0.1</httpclient.version>
+	</properties>
+
+	<!--+===========================================+ -->
+	<!--| Dependencies | -->
+	<!--+===========================================+ -->
+	<dependencies>
+
+		<!-- ########################## -->
+		<!-- Compile-time -->
+		<!-- ########################## -->
+
+		<!-- Ideally there should be almost no dependencies here because we want 
+			a minimal amount of intervention with the i2b2 webapp. -->
+		<!-- Core API -->
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-api</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>com.springsource.slf4j.org.apache.commons.logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>com.springsource.slf4j.log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Core XML -->
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-xml</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>edu.utah.further.core</groupId>
+					<artifactId>core-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Core Util -->
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-util</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>edu.utah.further.core</groupId>
+					<artifactId>core-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>com.springsource.slf4j.log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Core Query -->
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-query</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>edu.utah.further.core</groupId>
+					<artifactId>core-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- FQE-DS API -->
+		<dependency>
+			<groupId>edu.utah.further.fqe</groupId>
+			<artifactId>fqe-ds-api</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>edu.utah.further.core</groupId>
+					<artifactId>core-query</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Basic core web service utilities, for HTTP transport -->
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-ws</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>edu.utah.further.core</groupId>
+					<artifactId>core-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.ws.rs</groupId>
+					<artifactId>jsr311-api</artifactId>
+				</exclusion>
+				<!-- Provided by the i2b2 server classpath. They use an older version 
+					(3.0 vs 3.1), but I don't think it makes a different for our usage. -->
+				<exclusion>
+					<groupId>commons-httpclient</groupId>
+					<artifactId>commons-httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jcl</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+
+		<!-- ########################## -->
+		<!-- Runtime -->
+		<!-- ########################## -->
+
+		<!-- Ideally there should be almost no dependencies here because we want 
+			a minimal amount of intervention with the i2b2 webapp. -->
+
+		<!-- ########################## -->
+		<!-- Testing -->
+		<!-- ########################## -->
+
+		<dependency>
+			<groupId>edu.utah.further.core</groupId>
+			<artifactId>core-qunit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>xalan</groupId>
+			<artifactId>xalan</artifactId>
+			<version>${xalan.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- ########################## -->
+		<!-- Container-provided -->
+		<!-- ########################## -->
+
+		<!-- Here you may include dependencies that are available to the axis2 
+			webapp. -->
+
+		<!-- Servlet & Jsp -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSP API 2.1 is provided for example by Tomcat 6.0.x. -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>${httpclient.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<!-- =========================================== -->
+		<!-- Plugins -->
+		<!-- =========================================== -->
+		<plugins>
+			<plugin>
+				<!-- ########################## -->
+				<!-- Resource copying -->
+				<!-- ########################## -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/etc</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>web.xml.*</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- ########################## -->
+			<!-- Project assemblies -->
+			<!-- ########################## -->
+			<plugin>
+				<!-- <groupId>org.apache.maven.plugins</groupId> --> <!-- Default -->
+				<artifactId>maven-assembly-plugin</artifactId>
+				<!-- <version>2.2-beta-4</version> --> <!-- Get latest version -->
+				<executions>
+					<execution>
+						<id>install-bin</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptors>
+						<descriptor>${basedir}/etc/assembly-bin.xml</descriptor>
+					</descriptors>
+					<finalName>${finalName}</finalName>
+					<outputDirectory>${project.build.directory}</outputDirectory>
+					<workDirectory>${project.build.directory}/assembly/work</workDirectory>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
