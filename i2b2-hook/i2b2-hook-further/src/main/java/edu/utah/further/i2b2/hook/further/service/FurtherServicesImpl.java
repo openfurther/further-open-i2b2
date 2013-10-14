@@ -41,7 +41,7 @@ import edu.utah.further.core.xml.xpath.XPathNamespaceContext;
 import edu.utah.further.fqe.ds.api.domain.QueryContext;
 import edu.utah.further.fqe.ds.api.domain.ResultContext;
 import edu.utah.further.fqe.ds.api.domain.ResultContextKey;
-import edu.utah.further.fqe.ds.api.results.ResultType;
+import edu.utah.further.fqe.ds.api.service.results.ResultType;
 import edu.utah.further.fqe.ds.api.to.QueryContextIdentifier;
 import edu.utah.further.fqe.ds.api.to.QueryContextIdentifierTo;
 import edu.utah.further.fqe.ds.api.to.QueryContextState;
