@@ -40,7 +40,7 @@ i2b2.PM.model.html.loginDialog = '<div id="i2b2_login_modal_dialog" style="displ
 	'				<div class="label">Username:</div>\n'+
 	'				<div class="input"><input type="text" name="uname" id="loginusr" value="demo" size="20" maxlength="50" /></div>\n'+
 	'				<div class="label">Password:</div>\n'+
-	'				<div class="input"><input type="password" name="pword" id="loginpass" value="demouser" size="20" maxlength="50" /></div>\n'+
+	'				<div class="input"><input type="password" name="pword" id="loginpass" value="furtherdemo" size="20" maxlength="50" /></div>\n'+
 	'				<div class="label">i2b2 Host:</div>\n'+
 	'				<div class="input"><select name="server" id="logindomain"><option value="">Loading...</option></select></div>\n'+
 	'				<div class="button"><input type="button" value="  Login  " onclick="i2b2.PM.doLogin()" /></div>\n'+	
