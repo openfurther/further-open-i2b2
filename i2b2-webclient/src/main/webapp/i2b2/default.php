@@ -756,14 +756,14 @@ YAHOO.util.Event.addListener(window, "load", init);
 			<div style="font-size:12px; margin-left:40px" >Please check the query result type(s):</div>
 			<div style="border: 1px solid rgb(171, 173, 179); margin-left: 40px; width: 505px; padding: 4px">
 
-                <div class="further_text"><input id="countQuery" type="radio" class="chkQueryType" name="queryType" value="count_query" checked="checked" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Count Only Query to FURTHeR?</div>
+                <div class="further_text"><input id="countQuery" type="radio" class="chkQueryType" name="queryType" value="count_query" checked="checked" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Count Only Query to OpenFurther?</div>
                 <div style="margin-left: 15px; padding: 5px;">Results common to multiple sources won't be aggregated and will be counted more than once. Analysis tools can NOT be used with results.</div>
                 <div id="countDatasources" style="padding: 2px">
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_omopv2">OMOP v2 Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_openmrsv1_9">OpenMRS v1.9 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">OMOP v2 Data Source</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRSv1_9">OpenMRS v1.9 Data Source</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_edw">University of Utah Enterprise Data Warehouse</div>
@@ -773,15 +773,15 @@ YAHOO.util.Event.addListener(window, "load", init);
 
                 </div>
                 
-                <div class="further_text"><input id="dataQuery" type="radio" class="chkQueryType" name="queryType" value="data_query" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Query to FURTHeR ?</div>
+                <div class="further_text"><input id="dataQuery" type="radio" class="chkQueryType" name="queryType" value="data_query" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Query to OpenFurther ?</div>
                 <div style="margin-left: 15px; padding: 5px;"><span class="further_text_highlight">Results common to multiple sources will be displayed and analysis tools can be used with results. This also allows you to export the data set later.</div>
                 
                 <div id="dataDatasources" style="display:none; padding: 2px;">
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_omopv2">OMOP v2 Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_openmrsv1_9">OpenMRS v1.9 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">OMOP v2 Data Source</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRSv1_9">OpenMRS v1.9 Data Source</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_edw">University of Utah Enterprise Data Warehouse</div>

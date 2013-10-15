@@ -353,14 +353,28 @@ function QueryToolController() {
 			alert('You must select the type of query to run!');
 			return;
 		}
-
-		if (options.chk_data_query && !options.chk_data_ds_edw && !options.chk_data_ds_updb && !options.chk_data_ds_edw_apo && !options.chk_data_ds_ih_apo) {
-			alert('You must select at least one data source to query!');
+		
+		var data_query_checked = false;
+		var selectedDataDs = document.getElementsByName("dataQueryType");
+		for (var i=0; l=selectedDataDs.length; i < l; i++) {
+			if (selectedDataDs[i].checked){
+				data_query_checked = true;
+			}
+		}
+		if (!data_query_checked) {
+			alert('You must select at least one data source to query for data!');
 			return;
 		}
 		
-		if (options.chk_count_query && !options.chk_count_ds_edw && !options.chk_count_ds_updb && !options.chk_count_ds_edw_apo && !options.chk_count_ds_ih_apo) {
-			alert('You must select at least one data source to query!');
+		var count_query_checked = false;
+		var selectedCountDs = document.getElementsByName("countQueryType");
+		for (var i=0; l=selectedCountDs.length; i < l; i++) {
+			if (selectedCountDs[i].checked){
+				count_query_checked = true;
+			}
+		}
+		if (!count_query_checked) {
+			alert('You must select at least one data source to query for counts!');
 			return;
 		}
 		
@@ -374,7 +388,7 @@ function QueryToolController() {
 		
 		// query timer
 		if (options.chk_data_query || options.chk_count_query) {
-			var iqst = 'Executing query in <span class="further_text">FURTHeR...</span>';
+			var iqst = 'Executing federated query in <span class="further_text">OpenFurther...</span>';
 		}
 		else {
 			var iqst = 'Executing query in i2b2...';
@@ -494,21 +508,22 @@ function QueryToolController() {
 			var ds = "";
 			var type = "";
 			var dc = "";
+			
 			// Data query
 			if (options.chk_data_query) {
-				type = "DATA_QUERY"
-				if (options.chk_data_ds_edw && options.chk_data_ds_updb && options.chk_data_ds_edw_apo) {
-					ds += '<datasource>ALL</datasource>';
-				} else {
-					if (options.chk_data_ds_edw) {
-						ds += '<datasource>UUEDW</datasource>';
+				type = "DATA_QUERY";
+				var allSelected = true;
+				var selectedDs = document.getElementsByName("dataQueryType")
+				for (var i = 0; l=selectedDs.length; i < l; i++) {
+					if (selectedDs[i].checked) {
+						ds += '<datasource>' + selectedDs[i].value +'</datasource>';
+					} else {
+						allSelected = false;
 					}
-					if (options.chk_data_ds_updb) {
-						ds += '<datasource>UPDBL</datasource>';
-					}
-					if (options.chk_data_ds_edw_apo) {
-						ds += '<datasource>APO-UUEDW</datasource>';
-					}
+				}
+				
+				if (allSelected) {
+					ds = '<datasource>ALL</datasource>';
 				}
 				
 				// Data Category Selection
@@ -520,24 +535,24 @@ function QueryToolController() {
 					dc+='<datacategory>Procedure</datacategory>';
 				if(options.chk_labObs)
 					dc+='<datacategory>LabObservation</datacategory>';
-				
-			}
+			}	
 			
 			// Count query
 			
 			if (options.chk_count_query) {
 				type = "COUNT_QUERY"
-				if (options.chk_count_ds_edw) {
-					ds += '<datasource>UUEDW</datasource>';
+				var allSelected = true;
+				var selectedDs = document.getElementsByName("countQueryType")
+				for (var i = 0; l=selectedDs.length; i < l; i++) {
+					if (selectedDs[i].checked) {
+						ds += '<datasource>' + selectedDs[i].value +'</datasource>';
+					} else {
+						allSelected = false;
+					}
 				}
-				if (options.chk_count_ds_updb) {
-					ds += '<datasource>UPDBL</datasource>';
-				}
-				if (options.chk_count_ds_edw_apo) {
-					ds += '<datasource>APO-UUEDW</datasource>';
-				}
-				if (options.chk_count_ds_ih_apo) {
-					ds += '<datasource>APO-IH</datasource>';
+				
+				if (allSelected) {
+					ds = '<datasource>ALL</datasource>';
 				}
 			}
 			
