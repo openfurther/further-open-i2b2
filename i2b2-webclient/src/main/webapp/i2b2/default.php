@@ -762,8 +762,8 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_omop">OMOP Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_i2b2">i2b2 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_omopv2">OMOP v2 Data Source</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_openmrsv1_9">OpenMRS v1.9 Data Source</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_edw">University of Utah Enterprise Data Warehouse</div>
@@ -780,15 +780,16 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_omop">OMOP Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_i2b2">i2b2 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_omopv2">OMOP v2 Data Source</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_openmrsv1_9">OpenMRS v1.9 Data Source</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_edw">University of Utah Enterprise Data Warehouse</div>
 			                <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_updb">Utah Population Database Limited</div>';
 						}
 						?>
-			<br/>                
+			<br/>   
+					<div><strong>Data Categories</strong></div>             
                 	<div id="dataCategories" style="margin-left: 15px; padding: 5px;">Please check the data categories you want to be returned for use with the analysis tools <span class="further_text_highlight">(Only Demographics are supported for now)</span></div>
                 	<div class="further_data_category" style="margin-left:10px"><input type="checkbox" class="chkDataCat" name="dataCat" value="demographic">Demographics <font color="black">(Age, Religion, Race, Gender, Language, Marital Status, State, County)</font></div>
                 	<div class="further_data_category_disabled" style="margin-left:10px"><input type="checkbox" class="chkDataCat" name="dataCat" value="condition" disabled>Condition</div>
