@@ -251,11 +251,9 @@ public final class UTestI2b2FurtherTo {
 		children.add(newChildQueryContextToWithResults("UPDBL", 3l,
 				queryContextTo));
 		queryContextTo.addChildren(children);
-		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.SUM, null, 11l);
-		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.INTERSECTION, 1,
-				9l);
-		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.INTERSECTION, 2,
-				1l);
+		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.SUM, 11l);
+		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.UNION, 9l);
+		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.INTERSECTION, 1l);
 		queryContextTo.setStaleDateTime(staleDateTime);
 		return queryContextTo;
 	}
