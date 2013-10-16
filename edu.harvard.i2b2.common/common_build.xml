@@ -3,6 +3,8 @@
     <target name=".donotrun">
         <fail>The common-build file is meant for including, not running</fail>
     </target>
+
+    <property environment="env"/>
     
     <property file="local.properties"/>
     <property file="build.properties"/>

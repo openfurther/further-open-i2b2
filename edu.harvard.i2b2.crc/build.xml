@@ -14,7 +14,6 @@ $Id: build.xml,v 1.36 2008/09/26 17:00:02 rk903 Exp $
 	<property name="ejbspec" value="2.0" />
 	<property name="jboss.version" value="4.0" />
 
-	<property file="etc/spring/crc_application_directory.properties" />
 	<property file="db.oracle.properties" />
 
 	<!-- =================================================================== -->
@@ -225,8 +224,8 @@ $Id: build.xml,v 1.36 2008/09/26 17:00:02 rk903 Exp $
 	
 	<!-- deploy property setting -->
 	<target name="property_deploy">
-		<echo message="copying property files to ${edu.harvard.i2b2.crc.applicationdir}" />
-		<copy todir="${edu.harvard.i2b2.crc.applicationdir}">
+		<echo message="copying property files to ${jboss.home}/server/default/conf/crcapp" />
+		<copy todir="${jboss.home}/server/default/conf/crcapp">
 			<fileset dir="${etc}/spring">
 				<exclude name="CRCApplicationContext-*.xml" />
 				<exclude name="crc_application_directory.properties" />

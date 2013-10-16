@@ -12,8 +12,6 @@ $Id: build.xml,v 1.11 2008/10/16 03:42:56 rk903 Exp $
 	<property name="ejbspec" value="2.0" />
 	<property name="jboss.version" value="4.0" />
 
-
-	<property file="etc/spring/crc_loader_application_directory.properties" />
 	<property file="db.oracle.properties" />
 
 	<!-- =================================================================== -->
@@ -231,8 +229,8 @@ $Id: build.xml,v 1.11 2008/10/16 03:42:56 rk903 Exp $
 	</target>
 	<!-- deploy property setting -->
 	<target name="property_deploy">
-		<echo message="copying property files to ${edu.harvard.i2b2.crc.loader.applicationdir}" />
-		<copy todir="${edu.harvard.i2b2.crc.loader.applicationdir}">
+		<echo message="copying property files to ${jboss.home}/server/default/conf/crcloaderapp" />
+		<copy todir="${jboss.home}/server/default/conf/crcloaderapp">
 			<fileset dir="${etc}/spring">
 				<exclude name="crc_loader_application_directory.properties" />
 				<exclude name="CRCLoaderApplicationContext-*.xml" />
