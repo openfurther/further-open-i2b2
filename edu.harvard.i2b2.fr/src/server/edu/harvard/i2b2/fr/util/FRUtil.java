@@ -16,11 +16,12 @@ import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import edu.harvard.i2b2.common.exception.I2B2Exception;
 import edu.harvard.i2b2.common.util.ServiceLocator;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
-import org.springframework.core.io.FileSystemResource;
 
 /**
  * This is the CRC application's main utility class This utility class provides
@@ -139,27 +140,20 @@ public class FRUtil {
 	 */
 	private String getPropertyValue(String propertyName) throws I2B2Exception {
 		if (appProperties == null) {
-			//read application directory property file
-			loadProperties = ServiceLocator.getProperties(APPLICATION_DIRECTORY_PROPERTIES_FILENAME);
-			//read application directory property
-			String appDir = loadProperties.getProperty(APPLICATIONDIR_PROPERTIES);
-			if (appDir == null) { 
-				throw new I2B2Exception("Could not find " + APPLICATIONDIR_PROPERTIES + "from " + APPLICATION_DIRECTORY_PROPERTIES_FILENAME);
-			}
-			String appPropertyFile = appDir+"/"+APPLICATION_PROPERTIES_FILENAME;
+			
 			try { 
-				FileSystemResource fileSystemResource = new FileSystemResource(appPropertyFile);
+				Resource resource = new ClassPathResource("frapp/" + APPLICATION_PROPERTIES_FILENAME);
 				PropertiesFactoryBean pfb = new PropertiesFactoryBean();
-				pfb.setLocation(fileSystemResource);
+				pfb.setLocation(resource);
 				pfb.afterPropertiesSet();
 				appProperties = (Properties) pfb.getObject();
 			} catch (IOException e) {
 				throw new I2B2Exception(
-						"Application property file("+appPropertyFile+") missing entries or not loaded properly");
+						"Application property file("+APPLICATION_PROPERTIES_FILENAME+") missing entries or not loaded properly");
 			}
 			if (appProperties == null) {
 				throw new I2B2Exception(
-						"Application property file("+appPropertyFile+") missing entries or not loaded properly");
+						"Application property file("+APPLICATION_PROPERTIES_FILENAME+") missing entries or not loaded properly");
 			}
 		}
 
