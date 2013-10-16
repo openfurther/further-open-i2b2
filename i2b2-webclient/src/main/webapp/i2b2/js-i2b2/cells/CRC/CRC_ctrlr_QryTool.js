@@ -356,7 +356,7 @@ function QueryToolController() {
 		
 		var data_query_checked = false;
 		var selectedDataDs = document.getElementsByName("dataQueryType");
-		for (var i=0; l=selectedDataDs.length; i < l; i++) {
+		for (var i=0; i < selectedDataDs.length; i++) {
 			if (selectedDataDs[i].checked){
 				data_query_checked = true;
 			}
@@ -368,7 +368,7 @@ function QueryToolController() {
 		
 		var count_query_checked = false;
 		var selectedCountDs = document.getElementsByName("countQueryType");
-		for (var i=0; l=selectedCountDs.length; i < l; i++) {
+		for (var i=0; i < selectedCountDs.length; i++) {
 			if (selectedCountDs[i].checked){
 				count_query_checked = true;
 			}
@@ -514,7 +514,7 @@ function QueryToolController() {
 				type = "DATA_QUERY";
 				var allSelected = true;
 				var selectedDs = document.getElementsByName("dataQueryType")
-				for (var i = 0; l=selectedDs.length; i < l; i++) {
+				for (var i = 0; i < selectedDs.length; i++) {
 					if (selectedDs[i].checked) {
 						ds += '<datasource>' + selectedDs[i].value +'</datasource>';
 					} else {
@@ -543,7 +543,7 @@ function QueryToolController() {
 				type = "COUNT_QUERY"
 				var allSelected = true;
 				var selectedDs = document.getElementsByName("countQueryType")
-				for (var i = 0; l=selectedDs.length; i < l; i++) {
+				for (var i = 0; i < selectedDs.length; i++) {
 					if (selectedDs[i].checked) {
 						ds += '<datasource>' + selectedDs[i].value +'</datasource>';
 					} else {
