@@ -354,34 +354,38 @@ function QueryToolController() {
 			return;
 		}
 		
-		var data_query_checked = false;
-		var selectedDataDs = document.getElementsByName("dataQueryType");
-		for (var i=0; i < selectedDataDs.length; i++) {
-			if (selectedDataDs[i].checked){
-				data_query_checked = true;
+		if (options.chk_data_query) {
+			var data_query_checked = false;
+			var selectedDataDs = document.getElementsByName("dataQueryType");
+			for (var i=0; i < selectedDataDs.length; i++) {
+				if (selectedDataDs[i].checked){
+					data_query_checked = true;
+				}
+			}
+			if (!data_query_checked) {
+				alert('You must select at least one data source to query for data!');
+				return;
+			}
+
+			//should this be required?
+			if(options.chk_data_query){
+				if(!options.chk_demographic && !options.chk_condition && !options.chk_procedure && !options.chk_labObs){
+					alert('You must select at least one data category to query!');
+					return;
+				}
 			}
 		}
-		if (!data_query_checked) {
-			alert('You must select at least one data source to query for data!');
-			return;
-		}
 		
-		var count_query_checked = false;
-		var selectedCountDs = document.getElementsByName("countQueryType");
-		for (var i=0; i < selectedCountDs.length; i++) {
-			if (selectedCountDs[i].checked){
-				count_query_checked = true;
+		if (options.chk_count_query) {
+			var count_query_checked = false;
+			var selectedCountDs = document.getElementsByName("countQueryType");
+			for (var i=0; i < selectedCountDs.length; i++) {
+				if (selectedCountDs[i].checked){
+					count_query_checked = true;
+				}
 			}
-		}
-		if (!count_query_checked) {
-			alert('You must select at least one data source to query for counts!');
-			return;
-		}
-		
-		//should this be required?
-		if(options.chk_data_query){
-			if(!options.chk_demographic && !options.chk_condition && !options.chk_procedure && !options.chk_labObs){
-				alert('You must select at least one data category to query!');
+			if (!count_query_checked) {
+				alert('You must select at least one data source to query for counts!');
 				return;
 			}
 		}
