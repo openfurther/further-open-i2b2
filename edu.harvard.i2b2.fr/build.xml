@@ -13,8 +13,6 @@ $Id: build.xml,v 1.4 2008/07/23 19:53:55 tomcat Exp $
 	<property name="ejbspec" value="2.0" />
 	<property name="jboss.version" value="4.0" />
 
-
-	<property file="etc/spring/fr_application_directory.properties" />
 	<property file="db.oracle.properties" />
 
 	<!-- =================================================================== -->
@@ -167,8 +165,8 @@ $Id: build.xml,v 1.4 2008/07/23 19:53:55 tomcat Exp $
 			</copy>
 			
 			
-			<echo message="copying property files to ${edu.harvard.i2b2.fr.applicationdir}" />
-			<copy todir="${edu.harvard.i2b2.fr.applicationdir}">
+			<echo message="copying property files to ${jboss.home}/server/default/conf/frapp" />
+			<copy todir="${jboss.home}/server/default/conf/frapp">
 				<fileset dir="${etc}/spring">
 					<exclude name="fr_application_directory.properties" />
 				</fileset>

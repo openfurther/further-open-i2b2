@@ -6,8 +6,6 @@
 
 	
 	<property name="Project" value="edu.harvard.i2b2.workplace" />
-
-	<property file="etc/spring/workplace_application_directory.properties"/>
 	
 	<!-- ========== Executable Targets ======================================== -->
 	<property name="Name" value="Workplace" />
@@ -141,8 +139,8 @@
 				</fileset>
 			</copy>
 			
-			<echo message="copying property files to ${edu.harvard.i2b2.workplace.applicationdir}"/>
-			<copy todir="${edu.harvard.i2b2.workplace.applicationdir}">
+			<echo message="copying property files to ${jboss.home}/server/default/conf/workplaceapp"/>
+			<copy todir="${jboss.home}/server/default/conf/workplaceapp">
 				<fileset dir="${etc}/spring">
 					<exclude name="workplace_application_directory.properties" />
 				</fileset>

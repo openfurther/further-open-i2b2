@@ -11,8 +11,6 @@
 package edu.harvard.i2b2.workplace.util;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -21,247 +19,231 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.core.io.support.ResourcePatternResolver;
 
 import edu.harvard.i2b2.common.exception.I2B2Exception;
 import edu.harvard.i2b2.common.util.ServiceLocator;
 
-
 /**
- * This is the Workplace service's main utility class
- * This utility class provides support for
- * fetching resources like datasouce, to read application
- * properties, to get ejb home,etc.
- * $Id: WorkplaceUtil.java,v 1.5 2008/03/13 14:32:32 lcp5 Exp $
+ * This is the Workplace service's main utility class This utility class
+ * provides support for fetching resources like datasouce, to read application
+ * properties, to get ejb home,etc. $Id: WorkplaceUtil.java,v 1.5 2008/03/13
+ * 14:32:32 lcp5 Exp $
+ * 
  * @author rkuttan
  */
 public class WorkplaceUtil {
-    /** property file name which holds application directory name **/
-    public static final String APPLICATION_DIRECTORY_PROPERTIES_FILENAME = "workplace_application_directory.properties";
+	/** property file name which holds application directory name **/
+	public static final String APPLICATION_DIRECTORY_PROPERTIES_FILENAME = "workplace_application_directory.properties";
 
-    /** application directory property name **/
-    public static final String APPLICATIONDIR_PROPERTIES = "edu.harvard.i2b2.workplace.applicationdir";
+	/** application directory property name **/
+	public static final String APPLICATIONDIR_PROPERTIES = "edu.harvard.i2b2.workplace.applicationdir";
 
-    /** application property filename**/
-    public static final String APPLICATION_PROPERTIES_FILENAME = "workplace.properties";
+	/** application property filename **/
+	public static final String APPLICATION_PROPERTIES_FILENAME = "workplace.properties";
 
-    /** property name for datasource present in app property file**/
-    private static final String DATASOURCE_JNDI_PROPERTIES = "workplace.jndi.datasource_name";
+	/** property name for datasource present in app property file **/
+	private static final String DATASOURCE_JNDI_PROPERTIES = "workplace.jndi.datasource_name";
 
-    /** property name for metadata schema name**/
-    private static final String METADATA_SCHEMA_NAME_PROPERTIES = "workplace.bootstrapdb.metadataschema";
+	/** property name for metadata schema name **/
+	private static final String METADATA_SCHEMA_NAME_PROPERTIES = "workplace.bootstrapdb.metadataschema";
 
-    /** spring bean name for datasource **/
-    private static final String DATASOURCE_BEAN_NAME = "dataSource";
+	/** spring bean name for datasource **/
+	private static final String DATASOURCE_BEAN_NAME = "dataSource";
 
-    /** property name for PM endpoint reference **/
-    private static final String PM_WS_EPR = "workplace.ws.pm.url";
-    
-    /** property name for PM webserver method **/
-    private static final String PM_WS_METHOD = "workplace.ws.pm.webServiceMethod";
+	/** property name for PM endpoint reference **/
+	private static final String PM_WS_EPR = "workplace.ws.pm.url";
 
-    /** property name for PM bypass **/
-    private static final String PM_BYPASS = "workplace.ws.pm.bypass";
+	/** property name for PM webserver method **/
+	private static final String PM_WS_METHOD = "workplace.ws.pm.webServiceMethod";
 
-    /** property name for PM bypass project **/
-    private static final String PM_BYPASS_PROJECT = "workplace.ws.pm.bypass.project";
+	/** property name for PM bypass **/
+	private static final String PM_BYPASS = "workplace.ws.pm.bypass";
 
-    /** property name for PM bypass role **/
-    private static final String PM_BYPASS_ROLE = "workplace.ws.pm.bypass.role";
+	/** property name for PM bypass project **/
+	private static final String PM_BYPASS_PROJECT = "workplace.ws.pm.bypass.project";
 
-    /** class instance field**/
-    private static WorkplaceUtil thisInstance = null;
+	/** property name for PM bypass role **/
+	private static final String PM_BYPASS_ROLE = "workplace.ws.pm.bypass.role";
 
-    /** service locator field**/
-    private static ServiceLocator serviceLocator = null;
+	/** class instance field **/
+	private static WorkplaceUtil thisInstance = null;
 
-    /** field to store application properties **/
-    private static Properties appProperties = null;
+	/** service locator field **/
+	private static ServiceLocator serviceLocator = null;
 
-    /** log **/
-    protected final Log log = LogFactory.getLog(getClass());
+	/** field to store application properties **/
+	private static Properties appProperties = null;
 
-    /** field to store app datasource**/
-    private DataSource dataSource = null;
+	/** log **/
+	protected final Log log = LogFactory.getLog(getClass());
 
-    /** single instance of spring bean factory**/
-    private BeanFactory beanFactory = null;
+	/** field to store app datasource **/
+	private DataSource dataSource = null;
 
-    /**
-     * Private constructor to make the class singleton
-     */
-    private WorkplaceUtil() {
-    }
+	/** single instance of spring bean factory **/
+	private BeanFactory beanFactory = null;
 
-    /**
-     * Return this class instance
-     * @return OntologyUtil
-     */
-    public static WorkplaceUtil getInstance() {
-        if (thisInstance == null) {
-            thisInstance = new WorkplaceUtil();
-        }
+	/**
+	 * Helps resolve resources
+	 */
+	private final ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
 
-        serviceLocator = ServiceLocator.getInstance();
+	/**
+	 * Private constructor to make the class singleton
+	 */
+	private WorkplaceUtil() {
+	}
 
-        return thisInstance;
-    }
+	/**
+	 * Return this class instance
+	 * 
+	 * @return OntologyUtil
+	 */
+	public static WorkplaceUtil getInstance() {
+		if (thisInstance == null) {
+			thisInstance = new WorkplaceUtil();
+		}
 
-    /**
-     * Return the ontology spring config
-     * @return
-     */
-    public BeanFactory getSpringBeanFactory() {
-        if (beanFactory == null) {
-            String appDir = null;
+		serviceLocator = ServiceLocator.getInstance();
 
-            try {
-                //read application directory property file via classpath
-                Properties loadProperties = ServiceLocator.getProperties(APPLICATION_DIRECTORY_PROPERTIES_FILENAME);
-                //read directory property
-                appDir = loadProperties.getProperty(APPLICATIONDIR_PROPERTIES);
-            } catch (I2B2Exception e) {
-                log.error(APPLICATION_DIRECTORY_PROPERTIES_FILENAME +
-                    "could not be located from classpath ");
-            }
+		return thisInstance;
+	}
 
-            if (appDir != null) {
-                FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-                        "file:" + appDir + "/" +
-                        "WorkplaceApplicationContext.xml");
-                beanFactory = ctx.getBeanFactory();
-            } else {
-                FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-                        "classpath:" + "WorkplaceApplicationContext.xml");
-                beanFactory = ctx.getBeanFactory();
-            }
-        }
+	/**
+	 * Return the ontology spring config
+	 * 
+	 * @return
+	 */
+	public BeanFactory getSpringBeanFactory() {
+		if (beanFactory == null) {
+			ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
+					"workplaceapp/WorkplaceApplicationContext.xml");
+			beanFactory = ctx.getBeanFactory();
+		}
 
-        return beanFactory;
-    }
+		return beanFactory;
+	}
 
-    /**
-     * Return metadata schema name
-     * @return
-     * @throws I2B2Exception
-     */
-    public String getMetaDataSchemaName() throws I2B2Exception {
-        return getPropertyValue(METADATA_SCHEMA_NAME_PROPERTIES).trim()+ ".";
-    }
+	/**
+	 * Return metadata schema name
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public String getMetaDataSchemaName() throws I2B2Exception {
+		return getPropertyValue(METADATA_SCHEMA_NAME_PROPERTIES).trim() + ".";
+	}
 
-    /**
-     * Return PM cell endpoint reference URL
-     * @return
-     * @throws I2B2Exception
-     */
-    public String getPmEndpointReference() throws I2B2Exception {
-        return getPropertyValue(PM_WS_EPR).trim();
-    }
+	/**
+	 * Return PM cell endpoint reference URL
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public String getPmEndpointReference() throws I2B2Exception {
+		return getPropertyValue(PM_WS_EPR).trim();
+	}
 
-    /**
-     * Return PM cell web service method
-     * @return
-     * @throws I2B2Exception
-     */
-    public String getPmWebServiceMethod() throws I2B2Exception {
-        return getPropertyValue(PM_WS_METHOD).trim();
-    }
-    
-    /**
-     * Return PM bypass flag
-     * @return
-     * @throws I2B2Exception
-     */
-    public Boolean isPmBypass() throws I2B2Exception {
-        return Boolean.valueOf(getPropertyValue(PM_BYPASS).trim());
-    }
+	/**
+	 * Return PM cell web service method
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public String getPmWebServiceMethod() throws I2B2Exception {
+		return getPropertyValue(PM_WS_METHOD).trim();
+	}
 
-    /**
-     * Return PM bypass project name
-     * @return
-     * @throws I2B2Exception
-     */
-    public String getPmBypassProject() throws I2B2Exception {
-        return getPropertyValue(PM_BYPASS_PROJECT).trim();
-    }
+	/**
+	 * Return PM bypass flag
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public Boolean isPmBypass() throws I2B2Exception {
+		return Boolean.valueOf(getPropertyValue(PM_BYPASS).trim());
+	}
 
-    /**
-     * Return PM bypass role assignment
-     * @return
-     * @throws I2B2Exception
-     */
-    public String getPmBypassRole() throws I2B2Exception {
-        return getPropertyValue(PM_BYPASS_ROLE).trim();
-    }
+	/**
+	 * Return PM bypass project name
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public String getPmBypassProject() throws I2B2Exception {
+		return getPropertyValue(PM_BYPASS_PROJECT).trim();
+	}
 
-    
-    /**
-     * Return app server datasource
-     * @return datasource
-     * @throws I2B2Exception
-     */
-    public DataSource getDataSource(String dataSourceName) throws I2B2Exception {    	
-    	dataSource = (DataSource) serviceLocator
-		.getAppServerDataSource(dataSourceName);
-    	return dataSource;
-  
-    }
-    
-    //---------------------
-    // private methods here
-    //---------------------
+	/**
+	 * Return PM bypass role assignment
+	 * 
+	 * @return
+	 * @throws I2B2Exception
+	 */
+	public String getPmBypassRole() throws I2B2Exception {
+		return getPropertyValue(PM_BYPASS_ROLE).trim();
+	}
 
-    /**
-     * Load application property file into memory
-     */
-    private String getPropertyValue(String propertyName)
-        throws I2B2Exception {
-        if (appProperties == null) {
-            //read application directory property file
-            Properties loadProperties = ServiceLocator.getProperties(APPLICATION_DIRECTORY_PROPERTIES_FILENAME);
+	/**
+	 * Return app server datasource
+	 * 
+	 * @return datasource
+	 * @throws I2B2Exception
+	 */
+	public DataSource getDataSource(String dataSourceName) throws I2B2Exception {
+		dataSource = (DataSource) serviceLocator
+				.getAppServerDataSource(dataSourceName);
+		return dataSource;
 
-            //read application directory property
-            String appDir = loadProperties.getProperty(APPLICATIONDIR_PROPERTIES);
+	}
 
-            if (appDir == null) {
-                throw new I2B2Exception("Could not find " +
-                    APPLICATIONDIR_PROPERTIES + "from " +
-                    APPLICATION_DIRECTORY_PROPERTIES_FILENAME);
-            }
+	// ---------------------
+	// private methods here
+	// ---------------------
 
-            String appPropertyFile = appDir + "/" +
-                APPLICATION_PROPERTIES_FILENAME;
+	/**
+	 * Load application property file into memory
+	 */
+	private String getPropertyValue(String propertyName) throws I2B2Exception {
+		if (appProperties == null) {
 
-            try {
-                FileSystemResource fileSystemResource = new FileSystemResource(appPropertyFile);
-                PropertiesFactoryBean pfb = new PropertiesFactoryBean();
-                pfb.setLocation(fileSystemResource);
-                pfb.afterPropertiesSet();
-                appProperties = (Properties) pfb.getObject();
-            } catch (IOException e) {
-                throw new I2B2Exception("Application property file(" +
-                    appPropertyFile +
-                    ") missing entries or not loaded properly");
-            }
+			try {
+				Resource resource = new ClassPathResource("workplaceapp/"
+						+ APPLICATION_PROPERTIES_FILENAME);
+				PropertiesFactoryBean pfb = new PropertiesFactoryBean();
+				pfb.setLocation(resource);
+				pfb.afterPropertiesSet();
+				appProperties = (Properties) pfb.getObject();
+			} catch (IOException e) {
+				log.error("IOError:", e);
+				throw new I2B2Exception("Application property file("
+						+ APPLICATION_PROPERTIES_FILENAME
+						+ ") missing entries or not loaded properly");
+			}
 
-            if (appProperties == null) {
-                throw new I2B2Exception("Application property file(" +
-                    appPropertyFile +
-                    ") missing entries or not loaded properly");
-            }
-        }
+			if (appProperties == null) {
+				throw new I2B2Exception("Application property file("
+						+ APPLICATION_PROPERTIES_FILENAME
+						+ ") missing entries or not loaded properly");
+			}
+		}
 
-        String propertyValue = appProperties.getProperty(propertyName);
+		String propertyValue = appProperties.getProperty(propertyName);
 
-        if ((propertyValue != null) && (propertyValue.trim().length() > 0)) {
-            
-        } else {
-            throw new I2B2Exception("Application property file(" +
-                APPLICATION_PROPERTIES_FILENAME + ") missing " + propertyName +
-                " entry");
-        }
+		if ((propertyValue != null) && (propertyValue.trim().length() > 0)) {
 
-        return propertyValue;
-    }
+		} else {
+			throw new I2B2Exception("Application property file("
+					+ APPLICATION_PROPERTIES_FILENAME + ") missing "
+					+ propertyName + " entry");
+		}
+
+		return propertyValue;
+	}
 }
