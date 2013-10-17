@@ -30,6 +30,7 @@
 				<include>edu.utah.further.core:core-util</include>
 				<include>edu.utah.further.fqe:fqe-ds-api</include>
 				<include>edu.utah.further.security:security-api</include>
+				<include>commons-lang:commons-lang</include>
 				<include>org.slf4j:slf4j-api</include>
 				<include>org.slf4j:slf4j-jcl</include>
 			</includes>
