@@ -762,8 +762,8 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">OMOP v2 Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRSv1_9">OpenMRS v1.9 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP v2 data source)</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS v1.9 data source)</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_edw">University of Utah Enterprise Data Warehouse</div>
@@ -780,8 +780,8 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">OMOP v2 Data Source</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRSv1_9">OpenMRS v1.9 Data Source</div>';
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP v2 data source)</div>
+	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS v1.9 data source)</div>';
 						} else {
 							echo 
 							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_edw">University of Utah Enterprise Data Warehouse</div>
