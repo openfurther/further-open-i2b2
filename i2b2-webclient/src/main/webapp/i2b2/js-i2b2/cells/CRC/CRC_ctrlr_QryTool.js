@@ -467,7 +467,7 @@ function QueryToolController() {
 				for ( var r = 0; r < dataSources.length; r++) {
 					name = i2b2.h.getXNodeVal(dataSources[r], 'name');
 					count = i2b2.h.getXNodeVal(dataSources[r], 'count');
-					s += 'Matching patients (' + i2b2.CRC.dataSourceNameTable[name] + '): ' + count + '<br />';
+					s += 'Matching patients - ' + i2b2.CRC.dataSourceNameTable[name] + ': ' + count + '<br />';
 				}
 				var joins = results.refXML.getElementsByTagName('join');
 				for ( var r = 0; r < joins.length; r++) {
