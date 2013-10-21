@@ -130,7 +130,7 @@ i2b2.Init = function() {
 		
 		var fl = [];
 		for (var i=0; i<config_data.files.length; i++) {
-			fl.push(i2b2.hive.cfg.urlFramework+'hive/'+config_data.files[i]+'?v=1');
+			fl.push(i2b2.hive.cfg.urlFramework+'hive/'+config_data.files[i]+'?v=2');
 		}
 		
 		YAHOO.util.Get.script(fl, { 
