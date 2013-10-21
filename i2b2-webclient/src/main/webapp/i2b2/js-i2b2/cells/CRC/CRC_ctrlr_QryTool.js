@@ -337,6 +337,20 @@ function QueryToolController() {
 	// ==================================================================================================
 	// //
 	this._queryRun = function(inQueryName, options) {
+		
+		// Create data source name table
+		if (!i2b2.CRC.dataSourceNameTable) {
+			var dataSourceNames = $$('.further_datasource_name');
+			var dataSourceNameTable = new Object()
+			for ( var i = 0; i < dataSourceNames.length; i++) {
+				// Go through both count and data because may contain
+				// differences
+				dataSourceNameTable[dataSourceNames[i].firstChild.value] = dataSourceNames[i].innerHTML
+						.strip().stripTags().replace(/&nbsp;/, ' ')
+			}
+			i2b2.CRC.dataSourceNameTable = dataSourceNameTable;
+		}
+		
 		// make sure name is not blank
 		if (inQueryName.blank()) {
 			alert('Cannot run query with without providing a name!');
@@ -446,13 +460,14 @@ function QueryToolController() {
 				// Begin FURTHeR code
 				// Parse the FURTHeR query result embedded within the i2b2 XML response 
 /*				s = 'Query Finished...<br />'; */
-                                s = '';
-                                s += '<span class="further_text">';
+				
+				s = '';
+				s += '<span class="further_text">';
 				var dataSources = results.refXML.getElementsByTagName('dataSource');
 				for ( var r = 0; r < dataSources.length; r++) {
 					name = i2b2.h.getXNodeVal(dataSources[r], 'name');
 					count = i2b2.h.getXNodeVal(dataSources[r], 'count');
-					s += 'Matching patients (Data Source ' + name + '): ' + count + '<br />';
+					s += 'Matching patients (' + i2b2.CRC.dataSourceNameTable[name] + '): ' + count + '<br />';
 				}
 				var joins = results.refXML.getElementsByTagName('join');
 				for ( var r = 0; r < joins.length; r++) {
