@@ -387,8 +387,8 @@ final class FurtherServicesImpl implements FurtherServices {
 			log.debug("# data sources = " + numDataSources);
 		}
 		for (final QueryContext childQc : queryContext.getChildren()) {
-			if (childQc.getNumRecords() >= 0
-					&& childQc.getNumRecords() < resultMaskBoundary) {
+			if (childQc.getNumRecords() > 0
+					&& childQc.getNumRecords() <= resultMaskBoundary) {
 				isMasked = true;
 				maskedRecords += childQc.getNumRecords();
 
@@ -396,8 +396,8 @@ final class FurtherServicesImpl implements FurtherServices {
 			dataSourceResults
 					.add(new I2b2FurtherDataSourceResult(
 							childQc.getDataSourceId(),
-							(childQc.getNumRecords() >= 0
-									&& childQc.getNumRecords() < resultMaskBoundary ? I2b2FurtherQueryResultTo.COUNT_SCRUBBED
+							(childQc.getNumRecords() > 0
+									&& childQc.getNumRecords() <= resultMaskBoundary ? I2b2FurtherQueryResultTo.COUNT_SCRUBBED
 									: childQc.getNumRecords())));
 			if (log.isDebugEnabled()) {
 				log.debug("Added data source result " + childQc);
