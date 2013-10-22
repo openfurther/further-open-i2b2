@@ -109,7 +109,7 @@ function i2b2_BaseCell(configObj) {
 		// load the script files
 		var fl = [];
 		for (var i=0; i<this.cfg.files.length; i++) {
-			fl.push(this.cfg.baseDir+this.cfg.files[i]+'?v=2');
+			fl.push(this.cfg.baseDir+this.cfg.files[i]+'?v=3');
 		}
 		YAHOO.util.Get.script(fl, {onSuccess:cellLoadSig, onFailure:cellLoadFail, data: config_data, autopurge: !(i2b2.PM.model.login_debugging)});
 
