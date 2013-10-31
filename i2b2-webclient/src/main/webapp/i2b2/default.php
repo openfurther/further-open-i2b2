@@ -172,7 +172,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 </div>
 
 <div id="dua-viewer-panel" style="display:none;">
-	<div class="hd">FURTHeR Data Use Agreement</div>
+	<div class="hd">Sample Agreement</div>
 	<div class="bd" id="dua-viewer-body" class="help-viewer-body">
 		<p>Lorem Ipsum...</p>
 	</div>
