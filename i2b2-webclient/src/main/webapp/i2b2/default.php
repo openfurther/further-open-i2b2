@@ -222,8 +222,6 @@ YAHOO.util.Event.addListener(window, "load", init);
 			&nbsp;|&nbsp;
 			<a id="helpLink" href="Javascript:void(0)" onclick="i2b2.hive.HelpViewer.show('help', 'help/default.htm');">Help</a>
 			&nbsp;|&nbsp;
-			<a href="https://ideas.bmi.utah.edu" title="Have an idea to make FURTHeR better? Submit your idea to the informatics idea exchange!" target="_blank">Submit Ideas</a>
-			&nbsp;|&nbsp;
 			<?php
 				if ($ini['cas.enabled']) {
 					echo '<a href="?logout=true&userId=' . $_SESSION['userId'] . '">Logout</a>';
