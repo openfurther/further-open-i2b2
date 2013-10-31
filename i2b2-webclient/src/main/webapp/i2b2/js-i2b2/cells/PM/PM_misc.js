@@ -32,7 +32,7 @@ i2b2.PM.model.Domains = i2b2.hive.cfg.lstDomains;
 // ================================================================================================== //
 i2b2.PM.model.html = {};
 i2b2.PM.model.html.loginDialog = '<div id="i2b2_login_modal_dialog" style="display:block;">\n'+
-	'	<div class="hd">FURTHeR - i2b2 Login</div>\n'+
+	'	<div class="hd">OpenFurther - i2b2 Login</div>\n'+
 	'	<div class="bd login-dialog">\n'+
 	'		<form name="loginForm" style="margin:0;padding:0;" onsubmit="i2b2.PM.doLogin(); return false;">\n'+
 	'			<div id="loginMessage">Login incorrect or host not found.</div>\n'+
