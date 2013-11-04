@@ -226,19 +226,12 @@ i2b2.Dem1Set.loadDataIntoModel = function(ajaxResponse)
 		// Read and prepare result view key
 		var keyElement 		= rvElement.firstChild;
 		var type 		= keyElement.getAttribute('type');
-		var intersectionIndex 	= parseInt(keyElement.getAttribute('intersectionIndex'));
 
-		// Read result view data, save in global map
-		// NOTE: per Scott's requirements of 5-APR-11, only saving sum, union and intersection
-		if ((intersectionIndex == -1) || 
-		    (intersectionIndex == 1) || (intersectionIndex == i2b2.Dem1Set.model.numDataSources))
-		{
-			rvCounts[index] 	= new Object();
-			rvCounts[index].key 	= i2b2.Dem1Set.resultViewDisplayName(type, intersectionIndex)
-			rvCounts[index].value 	= i2b2.Dem1Set.getResultViewBreakdown(rvElement.childNodes);
-			
-			index++;
-		}
+		rvCounts[index] 	= new Object();
+		rvCounts[index].key 	= i2b2.Dem1Set.resultViewDisplayName(type, intersectionIndex)
+		rvCounts[index].value 	= i2b2.Dem1Set.getResultViewBreakdown(rvElement.childNodes);
+		
+		index++;
 	}
 
 	// Save in the Plugin's data model
