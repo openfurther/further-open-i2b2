@@ -228,7 +228,7 @@ i2b2.Dem1Set.loadDataIntoModel = function(ajaxResponse)
 		var type 		= keyElement.getAttribute('type');
 
 		rvCounts[index] 	= new Object();
-		rvCounts[index].key 	= i2b2.Dem1Set.resultViewDisplayName(type, intersectionIndex)
+		rvCounts[index].key 	= i2b2.Dem1Set.resultViewDisplayName(type)
 		rvCounts[index].value 	= i2b2.Dem1Set.getResultViewBreakdown(rvElement.childNodes);
 		
 		index++;
@@ -252,14 +252,16 @@ i2b2.Dem1Set.getResultsViews = function(rvData)
 	{
 		var rvElement		= rvData[i];
 		var key 		= rvElement.childNodes[0];
-		var type 		= key.getAttribute('type');
-		var intersectionIndex 	= parseInt(key.getAttribute('intersectionIndex'));
+		var type 		= key.textContent;
+		if (Prototype.Browser.IE) {
+			type 		= key.text;
+		}
 		var numRecords 		= rvElement.childNodes[1].firstChild.textContent;
 		if (Prototype.Browser.IE) {
 			numRecords 		= rvElement.childNodes[1].firstChild.text;
 		}
 		rv[i] 			= new Object();
-		rv[i].key 		= i2b2.Dem1Set.resultViewDisplayName(type, intersectionIndex);
+		rv[i].key 		= i2b2.Dem1Set.resultViewDisplayName(type);
 		rv[i].value		= parseInt(numRecords);
 	}
 	return rv;
@@ -309,12 +311,11 @@ i2b2.Dem1Set.getResultViewBreakdown = function(rvData)
         return rv;
 }
 
-i2b2.Dem1Set.resultViewDisplayName = function(type, intersectionIndex)
+i2b2.Dem1Set.resultViewDisplayName = function(type)
 //----------------------------------------------------------------------
 // Generate a human-readable string of a result view.
 // Parameters:
 // type - sum/union/intersection/...
-// intersectionIndex - intesection index, if type = 'INTERSECTION'
 // Returns: result view display name
 //----------------------------------------------------------------------
 {
@@ -324,30 +325,13 @@ i2b2.Dem1Set.resultViewDisplayName = function(type, intersectionIndex)
 		{
 		  	return 'Patient Sum'
 		}
+		case 'UNION':
+		{
+			return 'Unique Patients';
+		}
 		case 'INTERSECTION':
 		{
-			switch (intersectionIndex)
-			{
-				case 1:
-				{
-					return 'Unique Patients';
-				}
-
-// NOTE: data-dependent bug in displaying this case,
-// hard-coding to intersection for all intersectionIndex >= 2 for now
-				default:
-				{
-					return 'Patients Common in All Sources';
-				}
-/*
-				case i2b2.Dem1Set.model.numDataSources:
-				{
-					return 'Patients Common in All Sources';
-				}
-					return 'Patients Appearing in at least ' + intersectionIndex + ' Sources';
-				}
-*/
-			}
+			return 'Patients Common in All Sources';
 		}
 		default:
 		{
