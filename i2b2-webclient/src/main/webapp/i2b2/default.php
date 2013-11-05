@@ -414,7 +414,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 					</div>
 					<div id="QPD3" style="clear:both" oncontextmenu="return false" class="queryPanel"></div>
 				</div>
-				<div id="assocResultBox">Drop a previous result set on here</div>
+				<div id="assocResultBox" style="display:none">Drop a previous result set on here</div>
 				<div style="clear:both; width:100%; height:5px; overflow:hidden;"></div>
 
 				<div id="queryBalloonBox" onmouseover="i2b2.CRC.view.QT.hballoon.hideBalloons()">
