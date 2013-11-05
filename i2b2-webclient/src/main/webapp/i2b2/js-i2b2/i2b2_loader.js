@@ -53,12 +53,6 @@ i2b2.hive.tempCellsList = [
 			forceLoading: true,
 			forceConfigMsg: { params: [] },
 			forceDir: "cells/plugins/standard"
-		},
-		{ 
-			code:	"DataExport",
-			forceLoading: true,
-			forceConfigMsg: { params: [] },
-			forceDir: "cells/plugins/standard"
 		}
 
 	];
