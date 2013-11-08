@@ -112,6 +112,7 @@ i2b2.Dem1Set.getResultsCallback = function(results)
 		e += '<li>Check that your query was recently ran. Results are stored in memory and only exist for a limited amount of time.</li>'
 		e += '</ul>';
 		e += '</div>';
+		$$("DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].innerHTML = e;
 		return;
 	}
 
