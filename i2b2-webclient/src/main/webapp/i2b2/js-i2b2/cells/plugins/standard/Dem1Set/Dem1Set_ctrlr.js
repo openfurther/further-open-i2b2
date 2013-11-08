@@ -102,6 +102,18 @@ i2b2.Dem1Set.getResultsCallback = function(results)
 	// Switch to the "View Results" tab 
 	$$("DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-working")[0].hide();
 	$$("DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].show();
+	
+	if (results.error) {
+		var e = '';
+		e += '<div class="Dem1Set-MainContentPad">';
+		e += 'An error occurred, please check the following:';
+		e += '<ul>';
+		e += '<li>Check that your query is not a Count Only query. Full data results must be retrieved in order to perform aggregation.</li>'
+		e += '<li>Check that your query was recently ran. Results are stored in memory and only exist for a limited amount of time.</li>'
+		e += '</ul>';
+		e += '</div>';
+		return;
+	}
 
 	//-----------------------------------
 	// Load data

@@ -64,7 +64,7 @@
 
 
 <!-- load i2b2 framework -->
-<script type="text/javascript" src="js-i2b2/i2b2_loader.js?v=4"></script>
+<script type="text/javascript" src="js-i2b2/i2b2_loader.js?v=5"></script>
 <link type="text/css" href="assets/i2b2.css" rel="stylesheet" />
 <link type="text/css" href="assets/i2b2-NEW.css" rel="stylesheet" />
 <link type="text/css" href="assets/i2b2-further.css" rel="stylesheet" />
