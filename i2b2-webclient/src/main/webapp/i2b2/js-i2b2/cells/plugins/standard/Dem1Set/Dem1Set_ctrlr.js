@@ -110,6 +110,7 @@ i2b2.Dem1Set.getResultsCallback = function(results)
 		e += '<ul>';
 		e += '<li>Check that your query is not a Count Only query. Full data results must be retrieved in order to perform aggregation.</li>'
 		e += '<li>Check that your query was recently ran. Results are stored in memory and only exist for a limited amount of time.</li>'
+		e += '<li>Check that one or more of your queries did not fail. Aggregate results cannot be performed on failed data results.</li>'
 		e += '</ul>';
 		e += '</div>';
 		$$("DIV#Dem1Set-mainDiv DIV#Dem1Set-TABS DIV.results-finished")[0].innerHTML = e;

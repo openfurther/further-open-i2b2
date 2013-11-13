@@ -64,7 +64,7 @@
 
 
 <!-- load i2b2 framework -->
-<script type="text/javascript" src="js-i2b2/i2b2_loader.js?v=6"></script>
+<script type="text/javascript" src="js-i2b2/i2b2_loader.js?v=7"></script>
 <link type="text/css" href="assets/i2b2.css" rel="stylesheet" />
 <link type="text/css" href="assets/i2b2-NEW.css" rel="stylesheet" />
 <link type="text/css" href="assets/i2b2-further.css" rel="stylesheet" />
@@ -746,7 +746,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz��Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
@@ -764,7 +764,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz��Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
