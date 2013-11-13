@@ -164,7 +164,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 
 
 <div id="help-viewer-panel" style="display:none;">
-	<div class="hd">i2b2 Web Client Help</div>
+	<div class="hd">OpenFurther Help</div>
 	<div class="bd" id="help-viewer-body" class="help-viewer-body">
 		<p>Lorem Ipsum...</p>
 	</div>
