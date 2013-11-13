@@ -757,7 +757,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 
                 </div>
                 
-                <div class="further_text"><input id="dataQuery" type="radio" class="chkQueryType" name="queryType" value="data_query" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Query to OpenFurther ?</div>
+                <div class="further_text"><input id="dataQuery" type="radio" class="chkQueryType" name="queryType" value="data_query" onclick="i2b2.CRC.ctrlr.QT.toggleQueryType()"/>Submit Data Query to OpenFurther ?</div>
                 <div style="margin-left: 15px; padding: 5px;"><span class="further_text_highlight">Results common to multiple sources will be displayed and analysis tools can be used with results. This also allows you to export the data set later.</div>
                 
                 <div id="dataDatasources" style="display:none; padding: 2px;">
