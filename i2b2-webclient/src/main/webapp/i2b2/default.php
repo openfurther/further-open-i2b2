@@ -746,7 +746,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz��Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
@@ -764,7 +764,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz��Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRSv1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
