@@ -13,4 +13,4 @@ oracle.connectionString = //host.does.not.exist:1521/orcl.sid
 cas.url = host.does.not.exist
 
 ;Data Export Configuration
-csv.export.url = https://host.does.not.exist:9005/fqe/rest/fqe/query/export/CSV
+csv.export.url = http://host.does.not.exist:9000/fqe/rest/fqe/query/export/CSV
