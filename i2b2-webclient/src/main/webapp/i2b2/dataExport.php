@@ -39,7 +39,15 @@ if($refering['host']==$_SERVER['HTTP_HOST']){
 
 	if(strstr($body, '<?xml')){
 		$retObject=new SimpleXMLElement($body);
-		$errorMsg = $retObject->message;
+                // error code/message has been coming back qualified 
+                // with ns2, so check for this and use it to navigate xml 
+                $namespaces = $retObject->getNameSpaces(true);
+                $ns2 = $retObject->children($namespaces['ns2']);
+                if(is_null($ns2)){
+                        $errorMsg = $retObject->message;
+                } else {
+                        $errorMsg = $ns2->message;
+                }
 		//echo "<script type='text/javascript'>window.alert('".$errorMsg."')</script>";
 		echo "<script type='text/javascript'>window.alert('".$errorMsg."'); window.location ='https://".$_SERVER['HTTP_HOST']."/i2b2';</script>";
 		
