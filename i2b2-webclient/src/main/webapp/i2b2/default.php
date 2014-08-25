@@ -414,7 +414,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 					</div>
 					<div id="QPD3" style="clear:both" oncontextmenu="return false" class="queryPanel"></div>
 				</div>
-				<div id="assocResultBox" style="display:none">Drop a previous result set on here</div>
+				<div id="assocResultBox">Drop a previous result set on here</div>
 				<div style="clear:both; width:100%; height:5px; overflow:hidden;"></div>
 
 				<div id="queryBalloonBox" onmouseover="i2b2.CRC.view.QT.hballoon.hideBalloons()">
@@ -746,7 +746,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OMOP-v2">Schultz Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="OpenMRS-V1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
@@ -764,7 +764,7 @@ YAHOO.util.Event.addListener(window, "load", init);
 						<?php
 						if ($ini['demo']) {
 							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOPv2">Schultz Cancer Repository (OMOP data source)</div>
+							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OMOP-v2">Schultz Cancer Repository (OMOP data source)</div>
 	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="OpenMRS-V1_9">Schultz Healthcare Systems (OpenMRS data source)</div>';
 						} else {
 							echo 
