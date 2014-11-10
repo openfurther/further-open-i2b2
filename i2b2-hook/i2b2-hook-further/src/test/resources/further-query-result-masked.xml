@@ -1,11 +1,11 @@
 <furtherQueryResult>
 	<dataSources>
 		<dataSource>
-			<name>UUEDW</name>
+			<name>@DSCUSTOM-26@</name>
 			<count>8</count>
 		</dataSource>
 		<dataSource>
-			<name>UPDBL</name>
+			<name>@DSCUSTOM-28@</name>
 			<count>*</count>
 		</dataSource>
 	</dataSources>

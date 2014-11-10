@@ -209,9 +209,9 @@ public final class UTestI2b2FurtherTo {
 		final I2b2FurtherQueryResultTo queryResult = new I2b2FurtherQueryResultTo();
 
 		queryResult.getDataSources().add(
-				new I2b2FurtherDataSourceResult("UUEDW", 123));
+				new I2b2FurtherDataSourceResult("@DSCUSTOM-26@", 123));
 		queryResult.getDataSources().add(
-				new I2b2FurtherDataSourceResult("UPDBL", 456));
+				new I2b2FurtherDataSourceResult("@DSCUSTOM-28", 456));
 
 		queryResult.getJoins().add(new I2b2FurtherJoinResult("Sum", 789));
 		queryResult.getJoins().add(new I2b2FurtherJoinResult("Union", 500));
