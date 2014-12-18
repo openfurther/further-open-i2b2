@@ -744,13 +744,7 @@ YAHOO.util.Event.addListener(window, "load", init);
                 <div style="margin-left: 15px; padding: 5px;">Results common to multiple sources won't be aggregated and will be counted more than once. Analysis tools can NOT be used with results.</div>
                 <div id="countDatasources" style="padding: 2px">
 						<?php
-						if ($ini['demo']) {
 @DSCUSTOM-11@
-						} else {
-							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_edw">University of Utah Enterprise Data Warehouse</div>
-	                        <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="countQueryType" value="count_ds_updb">Utah Population Database Limited</div>';
-						}
 						?>
 
                 </div>
@@ -760,13 +754,7 @@ YAHOO.util.Event.addListener(window, "load", init);
                 
                 <div id="dataDatasources" style="display:none; padding: 2px;">
 						<?php
-						if ($ini['demo']) {
 @DSCUSTOM-12@
-						} else {
-							echo 
-							'<div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_edw">University of Utah Enterprise Data Warehouse</div>
-			                <div class="further_datasource_name" style="margin-left:10px"><input type="checkbox" class="chkQueryType" name="dataQueryType" value="data_ds_updb">Utah Population Database Limited</div>';
-						}
 						?>
 			<br/>   
 					<div><strong>Data Categories</strong></div>             
