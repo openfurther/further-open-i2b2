@@ -22,6 +22,7 @@ if ($ini['cas.enabled']) {
 	require_once('includes/sso.php');
 }
 require_once('includes/cache.php');
+require_once('includes/curlForward.php');
 
 nocache();
 
@@ -50,11 +51,13 @@ $BLACKLIST = array(
 
 $PostBody = file_get_contents("php://input");
 if ($PostBody=="") {
-	require_once('default.php');
+	//require_once('default.php');
+	echo CURLHandler::post('http://localhost/i2b2/default.php', array('i2b2UserName' => $_SESSION['userId'], 'i2b2Password'=> $_SESSION['password']));
 } else {
 	// Process the POST for proxy redirection
 
 	// Validate that POST data is XML and extract <proxy> tag
+	error_log(print_r($PostBody, TRUE)); 
 	$xmlPost = new SimpleXMLElement($PostBody);
 	if (!$xmlPost) { die("The POST body was not valid XML!"); }
 	$proxyNodeMatches = $xmlPost->xpath('message_header/proxy[redirect_url]');
@@ -95,7 +98,7 @@ if ($PostBody=="") {
 		}
 	}
 
-
+	error_log(print_r($proxyURL, TRUE)); 
 
 	// open the URL and forward the new XML in the POST body
 	$proxyRequest = curl_init($proxyURL);
@@ -118,7 +121,9 @@ if ($PostBody=="") {
 	}
 	// SEND REQUEST!!!
 	curl_setopt($proxyRequest, CURLOPT_HTTPHEADER, array('Expect:', 'Content-Type: text/xml'));
+	error_log(print_r($newXML, TRUE)); 
 	$proxyResult = curl_exec($proxyRequest);
+	error_log(print_r($proxyResult, TRUE)); 
 	// cleanup cURL connection
 	curl_close($proxyRequest);
 
@@ -129,4 +134,3 @@ if ($PostBody=="") {
 
 
 ?>
-

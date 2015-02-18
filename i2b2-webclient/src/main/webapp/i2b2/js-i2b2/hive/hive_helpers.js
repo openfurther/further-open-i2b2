@@ -218,7 +218,10 @@ i2b2.h.LoadingMask = {
 		mn.zindex = 50000;
 //		mn.style.cursor = 'wait';
 		mn.show();
-		i2b2.PM.view.modal.login.hide();
+		if (typeof(i2b2.PM.view.modal.login) != 'undefined' && i2b2.PM.view.modal.login != null)
+		{
+			i2b2.PM.view.modal.login.hide();
+		}
 	},
 	hide: function() {
 		// hide the loading mask

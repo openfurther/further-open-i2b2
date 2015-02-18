@@ -11,6 +11,7 @@ include_once('dua.php');
 include_once('userMapping.php');
 include_once('audit.php');
 require_once('cache.php');
+require_once('includes/curlForward.php');
 
 nocache();
 

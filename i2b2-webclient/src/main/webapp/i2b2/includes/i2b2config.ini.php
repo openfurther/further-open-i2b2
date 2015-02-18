@@ -3,14 +3,23 @@
 
 ;Audit Configuration
 audit.oracle.user = FRTHR_FQE
-audit.oracle.password = password
-audit.oracle.connectionString = //host.does.not.exist:1521/orcl.sid
+audit.oracle.password = @FURTHER_FQE@
+;audit.oracle.connectionString = //host.does.not.exist:1521/orcl.sid
+audit.oracle.connectionString = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = @DB_HOST@)(PORT = 1521)))(CONNECT_DATA=(SID=FURTHER)))"
 
 ;SSO Configuration
 oracle.user = I2B2USER
-oracle.password = password
-oracle.connectionString = //host.does.not.exist:1521/orcl.sid
-cas.url = host.does.not.exist
+oracle.password = @I2B2USER@
+;oracle.connectionString = //host.does.not.exist:1521/orcl.sid
+oracle.connectionString = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = @DB_HOST@)(PORT = 1521)))(CONNECT_DATA=(SID=FURTHER)))"
+cas.url = @CAS_HOST@
+cas.enabled = true
+sso.hmac.secret = @SSO_HMAC_SECRET@
 
 ;Data Export Configuration
-csv.export.url = http://host.does.not.exist:9000/fqe/rest/fqe/query/export/CSV
+csv.export.url = http://@ESB_HOST@:9000/fqe/rest/fqe/query/export/CSV
+
+;CSRF Protection
+nonce.secret=@NONCE_SECRET@
+
+demo = false

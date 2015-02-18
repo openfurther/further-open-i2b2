@@ -1,6 +1,7 @@
 <?php
 
 require_once('includes/cache.php');
+require_once('includes/curlForward.php');
 nocache();
 
 //Prevent invalid call to this php script 
