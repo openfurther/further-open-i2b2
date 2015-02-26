@@ -66,8 +66,10 @@ public class PasswordManagerServiceImpl
         String query = "select pw from "
                 + this.userPasswordImpl
                 + " pw where pw.sportletUser.oid='" + user.getID() + "'";
+System.out.println("[[[ GRID ]]] :: " + query);
         try {
             password = (PasswordImpl)pm.restore(query);
+System.out.println("[[[ GRID ]]] :: " + password);
         } catch (PersistenceManagerException e) {
             _log.error("Unable to retrieve password for user", e);
         }
@@ -76,6 +78,7 @@ public class PasswordManagerServiceImpl
 
     public void validateSuppliedPassword(User user, String value)
             throws InvalidPasswordException {
+System.out.println("[[[ GRID ]]] value :: " + value);
     	if (value.matches("FURTHER\\{.*\\}")) {
     		if (props == null) {
     			InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("secret.properties");
@@ -111,6 +114,8 @@ public class PasswordManagerServiceImpl
     		}
     	} else {
     		PasswordImpl password = getPasswordImpl(user);
+System.out.println("[[[ GRID ]]] getValue() :: " + password.getValue());
+System.out.println("[[[ GRID ]]] value :: " + value);
             if (password == null) {
                 _log.debug("No password found for user");
                 throw new InvalidPasswordException("No password found for user!");
@@ -119,17 +124,21 @@ public class PasswordManagerServiceImpl
             //_log.debug("Provided value is " + value);
 
             // MD5 hash of password value
-            try {
-                MessageDigest md5 = MessageDigest.getInstance("MD5");
-                md5.update(value.getBytes());
-                value = toHex(md5.digest());
-
-                //_log.debug("Hash of value is " + value);
-                if (!password.getValue().equals(value)) {
-                    throw new InvalidPasswordException("Supplied password does not match user password!");
-                }
-            } catch (NoSuchAlgorithmException e) {
-                _log.error("No such algorithm: MD5", e);
+            // WTF? why?
+//            try {
+// String hashedvalue 
+// MessageDigest md5 = MessageDigest.getInstance("MD5");
+// md5.update(value.getBytes());
+// System.out.println("[[[ GRID ]]] value.getBytes() :: " + value.getBytes());
+// value = toHex(md5.digest());
+// System.out.println("[[[ GRID ]]] value :: " + value);
+// } catch (NoSuchAlgorithmException e) {
+// _log.error("No such algorithm: MD5", e);
+// }
+                
+            //_log.debug("Hash of value is " + value);
+            if (!password.getValue().equals(value)) {
+                throw new InvalidPasswordException("Supplied password does not match user password!");
             }
     	}
     }
@@ -217,6 +226,7 @@ public class PasswordManagerServiceImpl
         for (int i = 0; i < digest.length; i++) {
             buf.append(Integer.toHexString((int) digest[i] & 0x00FF));
         }
+System.out.println("[[[ GRID ]]] toHex :: " + buf);
         return buf.toString();
     }
     
@@ -228,6 +238,7 @@ public class PasswordManagerServiceImpl
             byte[] bytes = mac.doFinal(value.getBytes());
             
             BigInteger bi = new BigInteger(1, bytes);
+System.out.println("[[[ GRID ]]] toHex :: " + String.format("%0" + (bytes.length << 1) + "x", bi));
             return String.format("%0" + (bytes.length << 1) + "x", bi);
 
         } catch (Exception e) {

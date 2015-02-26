@@ -1,0 +1,11 @@
+OpenFurther customized i2b2 user interface
+----------------------
+OpenFurther customized i2b2 1.3.2 (https://www.i2b2.org/) web user interface.
+
+Miscellaneous installation notes:
+1. If you see these files in the deployed Jboss i2b2.war WEB-INF/lib:
+
+axis2-jaxbri-1.1.1.jar  jaxb-api-2.0.2.jar  jaxb-impl-2.0.2.jar  jaxb-xjc-2.0.2.jar
+
+Remove them: they will collide with other JAXB jars and prevent un/marshalling from working.
+
