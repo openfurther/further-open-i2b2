@@ -66,10 +66,8 @@ public class PasswordManagerServiceImpl
         String query = "select pw from "
                 + this.userPasswordImpl
                 + " pw where pw.sportletUser.oid='" + user.getID() + "'";
-System.out.println("[[[ GRID ]]] :: " + query);
         try {
             password = (PasswordImpl)pm.restore(query);
-System.out.println("[[[ GRID ]]] :: " + password);
         } catch (PersistenceManagerException e) {
             _log.error("Unable to retrieve password for user", e);
         }
@@ -78,7 +76,6 @@ System.out.println("[[[ GRID ]]] :: " + password);
 
     public void validateSuppliedPassword(User user, String value)
             throws InvalidPasswordException {
-System.out.println("[[[ GRID ]]] value :: " + value);
     	if (value.matches("FURTHER\\{.*\\}")) {
     		if (props == null) {
     			InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("secret.properties");
@@ -114,8 +111,6 @@ System.out.println("[[[ GRID ]]] value :: " + value);
     		}
     	} else {
     		PasswordImpl password = getPasswordImpl(user);
-System.out.println("[[[ GRID ]]] getValue() :: " + password.getValue());
-System.out.println("[[[ GRID ]]] value :: " + value);
             if (password == null) {
                 _log.debug("No password found for user");
                 throw new InvalidPasswordException("No password found for user!");
@@ -226,7 +221,6 @@ System.out.println("[[[ GRID ]]] value :: " + value);
         for (int i = 0; i < digest.length; i++) {
             buf.append(Integer.toHexString((int) digest[i] & 0x00FF));
         }
-System.out.println("[[[ GRID ]]] toHex :: " + buf);
         return buf.toString();
     }
     
@@ -238,7 +232,6 @@ System.out.println("[[[ GRID ]]] toHex :: " + buf);
             byte[] bytes = mac.doFinal(value.getBytes());
             
             BigInteger bi = new BigInteger(1, bytes);
-System.out.println("[[[ GRID ]]] toHex :: " + String.format("%0" + (bytes.length << 1) + "x", bi));
             return String.format("%0" + (bytes.length << 1) + "x", bi);
 
         } catch (Exception e) {
