@@ -246,9 +246,9 @@ public final class UTestI2b2FurtherTo {
 	private QueryContextTo newQueryContextToBasicWithResultViews() {
 		final QueryContextTo queryContextTo = newQueryContextToBasic(false);
 		final List<QueryContextTo> children = newList();
-		children.add(newChildQueryContextToWithResults("UUEDW", 8l,
+		children.add(newChildQueryContextToWithResults("@DSCUSTOM-26@", 8l,
 				queryContextTo));
-		children.add(newChildQueryContextToWithResults("UPDBL", 3l,
+		children.add(newChildQueryContextToWithResults("@DSCUSTOM-28@", 3l,
 				queryContextTo));
 		queryContextTo.addChildren(children);
 		FqeDsQueryContextUtil.addResultViewTo(queryContextTo, ResultType.SUM, 11l);
