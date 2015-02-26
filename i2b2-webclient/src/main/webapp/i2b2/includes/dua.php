@@ -90,9 +90,4 @@ class DataUseAgreement{
 	}
 	
 }
-
-
-
-
-
 ?>

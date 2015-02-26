@@ -10,7 +10,7 @@
 
 <datasources>
 	<!-- sample sqlserver OntologyBootStrapDS -->
-	<local-tx-datasource>
+	<!-- local-tx-datasource>
 		<jndi-name>OntologyBootStrapDS_SQLSERVER</jndi-name>
 		<driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver
 		</driver-class>
@@ -20,7 +20,7 @@
 		<metadata>
 			<type-mapping>MS SQLSERVER2000</type-mapping>
 		</metadata>
-	</local-tx-datasource>
+	</local-tx-datasource -->
 
 	<!-- sample oracle OntologyBootStrapDS -->
 	<local-tx-datasource>
